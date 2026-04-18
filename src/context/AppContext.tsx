@@ -28,59 +28,120 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+// URL de votre API sur cPanel (à configurer dans votre .env ou ici directement)
+const API_BASE_URL = import.meta.env.VITE_API_URL || ''; 
+
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  // Initialize from localStorage or fallback to defaults
-  const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('dbc_products');
-    return saved ? JSON.parse(saved) : initialProducts;
-  });
-  
-  const [quoteRequests, setQuoteRequests] = useState<QuoteRequest[]>(() => {
-    const saved = localStorage.getItem('dbc_quotes');
-    return saved ? JSON.parse(saved) : [];
-  });
-  
-  const [contactMessages, setContactMessages] = useState<ContactMessage[]>(() => {
-    const saved = localStorage.getItem('dbc_messages');
-    return saved ? JSON.parse(saved) : [];
-  });
-  
-  const [isAdmin, setIsAdmin] = useState(() => {
-    return localStorage.getItem('dbc_is_admin') === 'true';
-  });
+  const [products, setProducts] = useState<Product[]>([]);
+  const [quoteRequests, setQuoteRequests] = useState<QuoteRequest[]>([]);
+  const [contactMessages, setContactMessages] = useState<ContactMessage[]>([]);
+  const [isAdmin, setIsAdmin] = useState(() => localStorage.getItem('dbc_is_admin') === 'true');
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Persistence Effects
+  // Chargement initial des données
   useEffect(() => {
-    localStorage.setItem('dbc_products', JSON.stringify(products));
+    const fetchData = async () => {
+      if (!API_BASE_URL) {
+        // Mode LocalStorage si pas d'API
+        const savedProducts = localStorage.getItem('dbc_products');
+        setProducts(savedProducts ? JSON.parse(savedProducts) : initialProducts);
+        
+        const savedQuotes = localStorage.getItem('dbc_quotes');
+        setQuoteRequests(savedQuotes ? JSON.parse(savedQuotes) : []);
+        
+        const savedMessages = localStorage.getItem('dbc_messages');
+        setContactMessages(savedMessages ? JSON.parse(savedMessages) : []);
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const [pRes, qRes, mRes] = await Promise.all([
+          fetch(`${API_BASE_URL}/products.php`),
+          isAdmin ? fetch(`${API_BASE_URL}/quotes.php`) : Promise.resolve(null),
+          isAdmin ? fetch(`${API_BASE_URL}/messages.php`) : Promise.resolve(null)
+        ]);
+
+        const pData = await pRes.json();
+        setProducts(Array.isArray(pData) ? pData : initialProducts);
+
+        if (qRes) {
+          const qData = await qRes.json();
+          setQuoteRequests(Array.isArray(qData) ? qData : []);
+        }
+
+        if (mRes) {
+          const mData = await mRes.json();
+          setContactMessages(Array.isArray(mData) ? mData : []);
+        }
+      } catch (error) {
+        console.error("Erreur lors du chargement des données API:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [isAdmin]);
+
+  // Sauvegarde LocalStorage en mode fallback
+  useEffect(() => {
+    if (!API_BASE_URL) {
+      localStorage.setItem('dbc_products', JSON.stringify(products));
+    }
   }, [products]);
-
-  useEffect(() => {
-    localStorage.setItem('dbc_quotes', JSON.stringify(quoteRequests));
-  }, [quoteRequests]);
-
-  useEffect(() => {
-    localStorage.setItem('dbc_messages', JSON.stringify(contactMessages));
-  }, [contactMessages]);
 
   useEffect(() => {
     localStorage.setItem('dbc_is_admin', isAdmin.toString());
   }, [isAdmin]);
 
-  // Product CRUD
-  const addProduct = useCallback((product: Product) => {
+  // Actions Produits
+  const addProduct = useCallback(async (product: Product) => {
     setProducts(prev => [...prev, product]);
+    if (API_BASE_URL) {
+      try {
+        await fetch(`${API_BASE_URL}/products.php`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(product)
+        });
+      } catch (error) {
+        console.error("Erreur API addProduct:", error);
+      }
+    }
   }, []);
 
-  const updateProduct = useCallback((id: string, updates: Partial<Product>) => {
+  const updateProduct = useCallback(async (id: string, updates: Partial<Product>) => {
     setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
-  }, []);
+    if (API_BASE_URL) {
+      const product = products.find(p => p.id === id);
+      if (product) {
+        try {
+          await fetch(`${API_BASE_URL}/products.php?id=${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...product, ...updates })
+          });
+        } catch (error) {
+          console.error("Erreur API updateProduct:", error);
+        }
+      }
+    }
+  }, [products]);
 
-  const deleteProduct = useCallback((id: string) => {
+  const deleteProduct = useCallback(async (id: string) => {
     setProducts(prev => prev.filter(p => p.id !== id));
+    if (API_BASE_URL) {
+      try {
+        await fetch(`${API_BASE_URL}/products.php?id=${id}`, { method: 'DELETE' });
+      } catch (error) {
+        console.error("Erreur API deleteProduct:", error);
+      }
+    }
   }, []);
 
-  // Quote Request CRUD
-  const addQuoteRequest = useCallback((request: Omit<QuoteRequest, 'id' | 'createdAt' | 'status'>) => {
+  // Actions Devis
+  const addQuoteRequest = useCallback(async (request: Omit<QuoteRequest, 'id' | 'createdAt' | 'status'>) => {
     const newRequest: QuoteRequest = {
       ...request,
       id: Date.now().toString(),
@@ -88,24 +149,47 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       status: 'pending'
     };
     setQuoteRequests(prev => [newRequest, ...prev]);
+    if (API_BASE_URL) {
+      try {
+        await fetch(`${API_BASE_URL}/quotes.php`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newRequest)
+        });
+      } catch (error) {
+        console.error("Erreur API addQuoteRequest:", error);
+      }
+    }
   }, []);
 
   const updateQuoteStatus = useCallback((id: string, status: QuoteRequest['status']) => {
     setQuoteRequests(prev => prev.map(r => r.id === id ? { ...r, status } : r));
+    // Optionnel: Ajouter un endpoint API pour changer le statut
   }, []);
 
   const deleteQuoteRequest = useCallback((id: string) => {
     setQuoteRequests(prev => prev.filter(r => r.id !== id));
   }, []);
 
-  // Contact Messages
-  const addContactMessage = useCallback((message: Omit<ContactMessage, 'id' | 'createdAt'>) => {
+  // Actions Messages
+  const addContactMessage = useCallback(async (message: Omit<ContactMessage, 'id' | 'createdAt'>) => {
     const newMessage: ContactMessage = {
       ...message,
       id: Date.now().toString(),
       createdAt: new Date().toISOString()
     };
     setContactMessages(prev => [newMessage, ...prev]);
+    if (API_BASE_URL) {
+      try {
+        await fetch(`${API_BASE_URL}/messages.php`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newMessage)
+        });
+      } catch (error) {
+        console.error("Erreur API addContactMessage:", error);
+      }
+    }
   }, []);
 
   const deleteContactMessage = useCallback((id: string) => {
@@ -142,7 +226,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       login,
       logout
     }}>
-      {children}
+      {!isLoading && children}
     </AppContext.Provider>
   );
 }
