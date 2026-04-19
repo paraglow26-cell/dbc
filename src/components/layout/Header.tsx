@@ -63,7 +63,7 @@ export default function Header() {
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-4 text-sm">
-            <span>contact@dbcsynthese.com</span>
+            <span>contact@abcsynthese.ma</span>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function Header() {
           <Link to="/" className="flex items-center">
             <img 
               src={logo} 
-              alt="DBC Synthèse Logo" 
+              alt="ABC Synthèse Logo" 
               className={`transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'} w-auto`} 
             />
           </Link>

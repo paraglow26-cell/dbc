@@ -70,7 +70,7 @@ export default function Home() {
                 <span className="text-[#a8f0e8]">Traumatologie</span>
               </h1>
               <p className="text-xl text-white/90 mb-8 max-w-xl">
-                DBC Synthèse fournit des implants et prothèses de haute qualité 
+                ABC Synthèse fournit des implants et prothèses de haute qualité 
                 pour les chirurgiens orthopédistes et traumatologues.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -136,7 +136,7 @@ export default function Home() {
           <SectionHeader
             subtitle="Nos Spécialités"
             title="Expertise médicale à votre service"
-            description="DBC Synthèse propose une gamme complète de solutions pour la chirurgie orthopédique et traumatologique."
+            description="ABC Synthèse propose une gamme complète de solutions pour la chirurgie orthopédique et traumatologique."
           />
           
           <div className="grid md:grid-cols-2 gap-8">

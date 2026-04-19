@@ -32,11 +32,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="inline-block bg-white p-2 rounded-xl">
-              <img src={logo} alt="DBC Synthèse Logo" className="h-16 w-auto" />
+              <img src={logo} alt="ABC Synthèse Logo" className="h-16 w-auto" />
             </Link>
 
             <p className="text-gray-400 text-sm leading-relaxed">
-              DBC Synthèse est votre partenaire de confiance en solutions orthopédiques 
+              ABC Synthèse est votre partenaire de confiance en solutions orthopédiques 
               et traumatologiques. Nous fournissons des implants et prothèses de haute 
               qualité pour les professionnels de santé.
             </p>
@@ -97,8 +97,8 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#1a8a7a] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400 text-sm">
-                  Boulevard Abdelmoumen<br />
-                  Casablanca 20250, Maroc
+                  Bd Massira, Etg 1<br />
+                  Maarif, Casablanca, Maroc
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -107,7 +107,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#1a8a7a] flex-shrink-0" />
-                <span className="text-gray-400 text-sm">contact@dbcsynthese.com</span>
+                <span className="text-gray-400 text-sm">contact@abcsynthese.ma</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-[#1a8a7a] flex-shrink-0" />
@@ -125,7 +125,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} DBC Synthèse. Tous droits réservés.
+              © {new Date().getFullYear()} ABC Synthèse. Tous droits réservés.
             </p>
             <div className="flex gap-6">
               {footerLinks.legal.map((link) => (

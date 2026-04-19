@@ -21,7 +21,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Adresse',
-    content: 'Boulevard Abdelmoumen\nCasablanca 20250, Maroc',
+    content: 'Bd Massira, Etg 1\nMaarif, Casablanca, Maroc',
   },
   {
     icon: Phone,
@@ -31,7 +31,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    content: 'contact@dbcsynthese.com\nsupport@dbcsynthese.com',
+    content: 'contact@abcsynthese.ma\nsupport@abcsynthese.ma',
   },
   {
     icon: Clock,
@@ -222,11 +222,11 @@ export default function Contact() {
                 <div className="text-center p-8">
                   <MapPin className="w-16 h-16 text-[#1a8a7a] mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    DBC Synthèse
+                    ABC Synthèse
                   </h3>
                   <p className="text-gray-600">
-                    Boulevard Abdelmoumen<br />
-                    Casablanca 20250, Maroc
+                    Bd Massira, Etg 1<br />
+                    Maarif, Casablanca, Maroc
                   </p>
                   <div className="mt-6 p-4 bg-white rounded-xl shadow-sm">
                     <p className="text-sm text-gray-500">

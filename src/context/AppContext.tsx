@@ -198,7 +198,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   // Auth
   const login = useCallback((email: string, password: string) => {
-    if (email === 'admin@dbcsynthese.com' && password === 'admin123') {
+    if (email === 'admin@abcsynthese.ma' && password === 'admin123') {
       setIsAdmin(true);
       return true;
     }

@@ -54,7 +54,7 @@ export default function AdminLogin() {
           </div>
           <CardTitle className="text-2xl">Administration</CardTitle>
           <p className="text-gray-500 text-sm mt-2">
-            DBC Synthèse - Espace réservé
+            ABC Synthèse - Espace réservé
           </p>
         </CardHeader>
         <CardContent>
@@ -73,7 +73,7 @@ export default function AdminLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@dbcsynthese.com"
+                placeholder="admin@abcsynthese.ma"
                 required
               />
             </div>
@@ -105,7 +105,7 @@ export default function AdminLogin() {
           
           <div className="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-500">
             <p className="font-medium mb-2">Identifiants de démonstration :</p>
-            <p>Email : admin@dbcsynthese.com</p>
+            <p>Email : admin@abcsynthese.ma</p>
             <p>Mot de passe : admin123</p>
           </div>
         </CardContent>

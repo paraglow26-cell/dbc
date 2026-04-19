@@ -45,7 +45,7 @@ const certifications = [
 const timeline = [
   {
     year: '2008',
-    title: 'Création de DBC Synthèse',
+    title: 'Création de ABC Synthèse',
     description: 'Fondation de l\'entreprise à Casablanca avec une vision claire : fournir des solutions orthopédiques de qualité.',
   },
   {
@@ -71,7 +71,7 @@ const timeline = [
   {
     year: '2024',
     title: 'Leader du marché',
-    description: 'DBC Synthèse devient l\'un des principaux fournisseurs au Maroc et en Afrique.',
+    description: 'ABC Synthèse devient l\'un des principaux fournisseurs au Maroc et en Afrique.',
   },
 ];
 
@@ -86,7 +86,7 @@ export default function About() {
             <Stethoscope className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            À propos de DBC Synthèse
+            À propos de ABC Synthèse
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
             Depuis plus de 15 ans, nous accompagnons les chirurgiens orthopédistes et 
