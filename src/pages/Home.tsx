@@ -84,8 +84,8 @@ export default function Home() {
                 </Button>
                 <QuoteButton
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10"
+                  variant="ghost"
+                  className="bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white hover:text-[#1a8a7a] transition-all duration-300 font-semibold px-8"
                 />
               </div>
             </div>
