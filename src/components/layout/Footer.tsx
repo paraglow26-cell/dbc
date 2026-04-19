@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Stethoscope, MapPin, Phone, Mail, Clock, Linkedin, Facebook } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Linkedin, Facebook } from 'lucide-react';
 
 import logo from '@/assets/logo-dbc.png';
 
