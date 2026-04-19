@@ -36,7 +36,7 @@ const contactInfo = [
   {
     icon: Clock,
     title: 'Horaires',
-    content: 'Lundi - Vendredi\n8h30 - 18h00',
+    content: 'Lundi - Vendredi\n09h00 - 18h00',
   },
 ];
 
@@ -218,23 +218,18 @@ export default function Contact() {
                 description="Visitez-nous dans nos locaux à Casablanca."
                 centered={false}
               />
-              <div className="bg-gray-100 rounded-2xl overflow-hidden h-[400px] flex items-center justify-center">
-                <div className="text-center p-8">
-                  <MapPin className="w-16 h-16 text-[#1a8a7a] mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    ABC Synthèse
-                  </h3>
-                  <p className="text-gray-600">
-                    Bd Massira, Etg 1<br />
-                    Maarif, Casablanca, Maroc
-                  </p>
-                  <div className="mt-6 p-4 bg-white rounded-xl shadow-sm">
-                    <p className="text-sm text-gray-500">
-                      La carte interactive sera intégrée ici.<br />
-                      Coordonnées GPS : 33.5731° N, 7.5898° W
-                    </p>
-                  </div>
-                </div>
+              <div className="bg-gray-100 rounded-2xl overflow-hidden h-[400px] flex items-center justify-center relative">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  frameBorder="0" 
+                  style={{ border: 0 }} 
+                  src="https://maps.google.com/maps?q=Bd%20Massira,%20Maarif,%20Casablanca,%20Maroc&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                ></iframe>
               </div>
             </div>
           </div>
