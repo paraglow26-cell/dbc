@@ -154,7 +154,7 @@ export default function AdminQuotes() {
             </TableHeader>
             <TableBody>
               {filteredQuotes.map((quote) => {
-                const statusInfo = statusLabels[quote.status];
+                const statusInfo = statusLabels[quote.status as keyof typeof statusLabels] || { label: quote.status || 'Inconnu', color: 'bg-gray-500', icon: Clock };
                 return (
                   <TableRow key={quote.id}>
                     <TableCell>
