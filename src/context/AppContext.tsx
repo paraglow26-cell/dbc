@@ -63,16 +63,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         ]);
 
         const pData = await pRes.json();
-        setProducts(Array.isArray(pData) ? pData : initialProducts);
+        setProducts((Array.isArray(pData) ? pData : initialProducts).map(p => ({
+          ...p,
+          createdAt: p.createdAt || p.created_at
+        })));
 
         if (qRes) {
           const qData = await qRes.json();
-          setQuoteRequests(Array.isArray(qData) ? qData : []);
+          setQuoteRequests((Array.isArray(qData) ? qData : []).map(q => ({
+            ...q,
+            createdAt: q.createdAt || q.created_at
+          })));
         }
 
         if (mRes) {
           const mData = await mRes.json();
-          setContactMessages(Array.isArray(mData) ? mData : []);
+          setContactMessages((Array.isArray(mData) ? mData : []).map(m => ({
+            ...m,
+            createdAt: m.createdAt || m.created_at
+          })));
         }
       } catch (error) {
         console.error("Erreur lors du chargement des données API:", error);
