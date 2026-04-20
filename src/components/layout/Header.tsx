@@ -13,16 +13,18 @@ import logo from '@/assets/logo-dbc.png';
 
 const navItems = [
   { name: 'Accueil', href: '/' },
-  { name: 'À propos', href: '/a-propos' },
+  { name: 'ABC Synthèse', href: '/a-propos' },
   {
-    name: 'Services',
-    href: '/services',
+    name: 'Nos Solutions',
+    href: '/produits',
     children: [
-      { name: 'Orthopédie', href: '/services/orthopedie' },
-      { name: 'Traumatologie', href: '/services/traumatologie' },
+      { name: 'Orthopédie', href: '/produits?category=orthopedie' },
+      { name: 'Traumatologie', href: '/produits?category=traumatologie' },
+      { name: 'Équipements', href: '/produits?category=equipements' },
+      { name: 'Consommables', href: '/produits?category=consommables' },
     ],
   },
-  { name: 'Produits', href: '/produits' },
+  { name: 'SAV & Expertise', href: '/expertise' },
   { name: 'Contact', href: '/contact' },
 ];
 

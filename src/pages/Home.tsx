@@ -10,36 +10,45 @@ import {
   Bone,
   Activity,
   Stethoscope,
-  CheckCircle2
+  CheckCircle2,
+  Syringe,
+  Microscope,
+  HardHat,
+  Monitor
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';
-import ServiceCard from '@/components/ui-custom/ServiceCard';
 import SectionHeader from '@/components/ui-custom/SectionHeader';
 import QuoteButton from '@/components/ui-custom/QuoteButton';
 
 const stats = [
-  { value: '15+', label: 'Années d\'expérience', icon: Award },
-  { value: '500+', label: 'Produits disponibles', icon: Shield },
-  { value: '1000+', label: 'Clients satisfaits', icon: Users },
-  { value: '50+', label: 'Pays desservis', icon: TrendingUp },
+  { value: '15+', label: 'Ans d\'Expertise', icon: Award },
+  { value: '800+', label: 'Dispositifs Médicaux', icon: Shield },
+  { value: '100%', label: 'Conformité ISO', icon: CheckCircle2 },
+  { value: '24/7', label: 'Support Technique', icon: TrendingUp },
 ];
 
-const values = [
+const mainSolutions = [
   {
-    title: 'Qualité',
-    description: 'Tous nos produits sont certifiés CE et fabriqués selon les normes ISO les plus strictes.',
-    icon: Shield,
+    title: 'Équipements Médicaux',
+    description: 'Distribution d\'équipements de marques internationales leaders, réputées pour leur fiabilité.',
+    icon: Monitor,
+    category: 'equipements',
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800',
   },
   {
-    title: 'Innovation',
-    description: 'Recherche et développement continus pour proposer les solutions les plus avancées.',
-    icon: TrendingUp,
+    title: 'Matériel Chirurgical',
+    description: 'Large choix de matériel répondant aux besoins critiques des blocs opératoires.',
+    icon: Stethoscope,
+    category: 'orthopedie',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800',
   },
   {
-    title: 'Sécurité',
-    description: 'Biocompatibilité garantie et traçabilité complète de tous nos implants.',
-    icon: CheckCircle2,
+    title: 'Consommables',
+    description: 'Offre complète de consommables provenant de marques mondialement reconnues.',
+    icon: Syringe,
+    category: 'consommables',
+    image: 'https://images.unsplash.com/photo-1584362142249-17d77bc22d8a?auto=format&fit=crop&q=80&w=800',
   },
 ];
 
@@ -51,195 +60,236 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-44 pb-20 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5]">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
+      <section className="relative min-h-[95vh] flex items-center pt-20 overflow-hidden">
+        {/* Background Layer */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1576091160550-217359f42f8c?auto=format&fit=crop&q=80&w=2000" 
+            alt="Medical expertise"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0d5c50]/95 via-[#1a8a7a]/90 to-transparent"></div>
         </div>
         
         {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <Badge className="bg-white/20 text-white border-0 mb-6 px-4 py-1.5">
-                Leader en solutions orthopédiques
-              </Badge>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Solutions médicales d'excellence en{' '}
-                <span className="text-[#a8f0e8]">Orthopédie</span> &{' '}
-                <span className="text-[#a8f0e8]">Traumatologie</span>
-              </h1>
-              <p className="text-xl text-white/90 mb-8 max-w-xl">
-                ABC Synthèse fournit des implants et prothèses de haute qualité 
-                pour les chirurgiens orthopédistes et traumatologues.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  onClick={() => navigate('/produits')}
-                  size="lg"
-                  className="bg-white text-[#1a8a7a] hover:bg-white/90 font-semibold px-8"
-                >
-                  Découvrir nos produits
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <QuoteButton
-                  size="lg"
-                  variant="ghost"
-                  className="bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white hover:text-[#1a8a7a] transition-all duration-300 font-semibold px-8"
-                />
-              </div>
-            </div>
-            
-            {/* Hero Visual */}
-            <div className="hidden lg:flex justify-center">
-              <div className="relative">
-                <div className="w-80 h-80 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <div className="w-64 h-64 bg-white/20 rounded-full flex items-center justify-center">
-                    <Stethoscope className="w-32 h-32 text-white" />
-                  </div>
-                </div>
-                {/* Floating elements */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                  <Bone className="w-10 h-10 text-white" />
-                </div>
-                <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                  <Activity className="w-10 h-10 text-white" />
-                </div>
-              </div>
+          <div className="max-w-2xl text-white">
+            <Badge className="bg-white/20 text-white border-0 mb-6 px-4 py-1.5 backdrop-blur-md">
+              Expert en dispositifs médicaux depuis 2008
+            </Badge>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">
+              L'Innovation au Service de la <span className="text-[#a8f0e8]">Santé</span>
+            </h1>
+            <p className="text-xl text-white/90 mb-10 leading-relaxed">
+              ABC Synthèse est le leader dans la production et la distribution de dispositifs médicaux au Maroc. 
+              Nous allions expertise humaine et technologie de pointe pour satisfaire les besoins des professionnels.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button
+                onClick={() => navigate('/produits')}
+                size="lg"
+                className="bg-white text-[#1a8a7a] hover:bg-white/90 font-semibold px-8 h-14 text-lg"
+              >
+                Explorer nos Solutions
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <QuoteButton
+                size="lg"
+                variant="ghost"
+                className="bg-white/10 backdrop-blur-md border-2 border-white/50 text-white hover:bg-white hover:text-[#1a8a7a] transition-all duration-300 font-semibold px-8 h-14 text-lg"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
+      {/* Solutions Pillars */}
+      <section className="py-24 bg-white relative z-10 -mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="w-14 h-14 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-7 h-7 text-[#1a8a7a]" />
+          <div className="grid md:grid-cols-3 gap-8">
+            {mainSolutions.map((solution, idx) => (
+              <div 
+                key={idx} 
+                className="group relative overflow-hidden rounded-3xl bg-white shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                onClick={() => navigate(`/produits?category=${solution.category}`)}
+              >
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={solution.image} 
+                    alt={solution.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
-                  {stat.value}
+                <div className="p-8">
+                  <div className="w-12 h-12 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#1a8a7a] transition-colors duration-300">
+                    <solution.icon className="w-6 h-6 text-[#1a8a7a] group-hover:text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{solution.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {solution.description}
+                  </p>
+                  <span className="text-[#1a8a7a] font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                    En savoir plus <ArrowRight className="w-4 h-4 ml-2" />
+                  </span>
                 </div>
-                <div className="text-gray-600 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Expertise & Manufacturing Section */}
+      <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            subtitle="Nos Spécialités"
-            title="Expertise médicale à votre service"
-            description="ABC Synthèse propose une gamme complète de solutions pour la chirurgie orthopédique et traumatologique."
-          />
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <ServiceCard
-              title="Orthopédie"
-              description="Prothèses articulaires et implants pour le remplacement des articulations usées ou endommagées."
-              icon={Bone}
-              href="/services/orthopedie"
-              features={[
-                'Prothèses de hanche',
-                'Prothèses de genou',
-                'Prothèses d\'épaule',
-                'Implants spécialisés',
-              ]}
-            />
-            <ServiceCard
-              title="Traumatologie"
-              description="Solutions d'ostéosynthèse pour la fixation des fractures et la reconstruction osseuse."
-              icon={Activity}
-              href="/services/traumatologie"
-              features={[
-                'Plaques et vis',
-                'Clous intramédullaires',
-                'Fixateurs externes',
-                'Systèmes de verrouillage',
-              ]}
-            />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#1a8a7a]/5 rounded-full blur-3xl"></div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" 
+                  alt="Production ABC Synthèse" 
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-[240px]">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <CheckCircle2 className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <span className="font-bold text-gray-900">Qualité Certifiée</span>
+                </div>
+                <p className="text-sm text-gray-500">Conformité aux normes ISO 13485 & ISO 9001.</p>
+              </div>
+            </div>
+            
+            <div>
+              <SectionHeader
+                subtitle="Notre Expertise"
+                title="Savoir-faire et Innovation"
+                description="ABC Synthèse appuie son leadership sur l'expertise de son capital humain, l'innovation continue et un service après-vente de proximité."
+                centered={false}
+              />
+              <div className="space-y-6 mt-8">
+                <div className="flex gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center shrink-0">
+                    <HardHat className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Production Locale</h4>
+                    <p className="text-gray-600 text-sm">Unités de fabrication modernes basées à Casablanca assurant une réactivité optimale.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                    <Microscope className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Innovation & R&D</h4>
+                    <p className="text-gray-600 text-sm">Développement constant de nouvelles solutions orthopédiques et chirurgicales.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition-all">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
+                    <TrendingUp className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Service Après-Vente</h4>
+                    <p className="text-gray-600 text-sm">Accompagnement technique et maintenance pour garantir la pérennité de vos équipements.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Banner */}
+      <section className="py-16 bg-[#1a8a7a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="text-center text-white">
+                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
+                <div className="text-white/80 font-medium tracking-wide uppercase text-xs">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            subtitle="Nos Produits"
-            title="Produits en vedette"
-            description="Découvrez notre sélection de produits les plus demandés par les professionnels de santé."
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.slice(0, 3).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
+          <div className="flex justify-between items-end mb-12">
+            <div className="max-w-2xl">
+              <Badge className="bg-[#1a8a7a]/10 text-[#1a8a7a] border-0 mb-4 px-4 py-1.5 uppercase tracking-wider text-[10px] font-bold">
+                Catalogue Premium
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-900">Produits à la une</h2>
+            </div>
             <Button
               onClick={() => navigate('/produits')}
-              variant="outline"
-              size="lg"
-              className="border-[#1a8a7a] text-[#1a8a7a] hover:bg-[#1a8a7a] hover:text-white"
+              variant="link"
+              className="text-[#1a8a7a] font-bold flex items-center p-0"
             >
-              Voir tous les produits
-              <ArrowRight className="w-5 h-5 ml-2" />
+              Voir tout le catalogue <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 bg-[#1a8a7a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            subtitle="Nos Valeurs"
-            title="L'excellence au cœur de notre mission"
-            description="Nous nous engageons à fournir des solutions médicales sûres, innovantes et de la plus haute qualité."
-            light
-          />
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
-                  <value.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                <p className="text-white/80">{value.description}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.length > 0 ? (
+              featuredProducts.slice(0, 3).map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <p className="col-span-full text-center text-gray-500 italic py-12">
+                Nos produits phares seront bientôt affichés ici.
+              </p>
+            )}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Besoin d'un devis personnalisé ?
+      {/* Global Presence / Partners Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <SectionHeader
+            subtitle="Nos Partenaires"
+            title="Ils nous font confiance"
+            description="Nous collaborons avec les plus grands noms de l'industrie médicale mondiale pour vous offrir le meilleur."
+          />
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="h-12 flex items-center justify-center font-bold text-2xl text-gray-400">MEDTRONIC</div>
+            <div className="h-12 flex items-center justify-center font-bold text-2xl text-gray-400">STRYKER</div>
+            <div className="h-12 flex items-center justify-center font-bold text-2xl text-gray-400">ZIMMER</div>
+            <div className="h-12 flex items-center justify-center font-bold text-2xl text-gray-400">JOHNSON</div>
+            <div className="h-12 flex items-center justify-center font-bold text-2xl text-gray-400">SIEMENS</div>
+            <div className="h-12 flex items-center justify-center font-bold text-2xl text-gray-400">GE HEALTH</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#0d5c50]">
+          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')]"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Vous souhaitez plus d'informations ?
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Nos équipes commerciales sont à votre disposition pour étudier vos besoins 
-            et vous proposer les solutions les plus adaptées.
+          <p className="text-xl text-white/80 mb-10">
+            Nos conseillers sont à votre disposition pour vous accompagner dans le choix des solutions les plus adaptées à vos besoins cliniques.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <QuoteButton size="lg" className="bg-[#1a8a7a] hover:bg-[#147a6a]" />
+            <QuoteButton size="lg" className="bg-[#a8f0e8] text-[#0d5c50] hover:bg-white" />
             <Button
               onClick={() => navigate('/contact')}
               variant="outline"
               size="lg"
-              className="border-gray-300"
+              className="border-white text-white hover:bg-white hover:text-[#0d5c50] h-14 px-10"
             >
-              Nous contacter
+              Contactez-nous
             </Button>
           </div>
         </div>
