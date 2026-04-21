@@ -149,9 +149,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             body: JSON.stringify(updatedProduct)
           }).then(res => res.json())
             .then(data => {
-              if (!data.success) console.warn("L'API MySQL n'a pas pu enregistrer les changements:", data.error);
+              if (!data.success) {
+                console.warn("L'API MySQL n'a pas pu enregistrer les changements:", data.error);
+                alert("Erreur de sauvegarde MySQL: " + (data.error || "Problème inconnu. Vérifiez votre schéma SQL."));
+              }
             })
-            .catch(err => console.error("Erreur réseau API:", err));
+            .catch(err => {
+              console.error("Erreur réseau API:", err);
+              alert("Impossible de contacter le serveur MySQL.");
+            });
         }
       }
       return newProducts;
