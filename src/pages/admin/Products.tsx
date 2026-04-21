@@ -33,7 +33,9 @@ import {
   Trash2, 
   Bone,
   Activity,
-  Star
+  Star,
+  Monitor,
+  Stethoscope
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import type { Product } from '@/types';
@@ -149,7 +151,7 @@ export default function AdminProducts() {
                   <Label>Catégorie *</Label>
                   <Select 
                     value={formData.category} 
-                    onValueChange={(v) => setFormData({ ...formData, category: v as 'orthopedie' | 'traumatologie' })}
+                    onValueChange={(v) => setFormData({ ...formData, category: v as any })}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -157,6 +159,8 @@ export default function AdminProducts() {
                     <SelectContent>
                       <SelectItem value="orthopedie">Orthopédie</SelectItem>
                       <SelectItem value="traumatologie">Traumatologie</SelectItem>
+                      <SelectItem value="equipements">Équipements Médicaux</SelectItem>
+                      <SelectItem value="consommables">Consommables</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -353,8 +357,12 @@ export default function AdminProducts() {
                       <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
                         {product.category === 'orthopedie' ? (
                           <Bone className="w-5 h-5 text-[#1a8a7a]" />
-                        ) : (
+                        ) : product.category === 'traumatologie' ? (
                           <Activity className="w-5 h-5 text-[#1a8a7a]" />
+                        ) : product.category === 'equipements' ? (
+                          <Monitor className="w-5 h-5 text-[#1a8a7a]" />
+                        ) : (
+                          <Stethoscope className="w-5 h-5 text-[#1a8a7a]" />
                         )}
                       </div>
                       <div>
@@ -367,7 +375,10 @@ export default function AdminProducts() {
                   </TableCell>
                   <TableCell>
                     <Badge variant="outline">
-                      {product.category === 'orthopedie' ? 'Orthopédie' : 'Traumatologie'}
+                      {product.category === 'orthopedie' ? 'Orthopédie' : 
+                       product.category === 'traumatologie' ? 'Traumatologie' :
+                       product.category === 'equipements' ? 'Équipements Médicaux' :
+                       product.category === 'consommables' ? 'Consommables' : ''}
                     </Badge>
                   </TableCell>
                   <TableCell>{product.subcategory}</TableCell>

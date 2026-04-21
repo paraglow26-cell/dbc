@@ -197,7 +197,7 @@ export default function Traumatologie() {
               onClick={() => navigate('/contact')}
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white/10"
+              className="border-white text-white hover:bg-white/10 bg-transparent"
             >
               Nous contacter
             </Button>

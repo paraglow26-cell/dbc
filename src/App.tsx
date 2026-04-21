@@ -15,6 +15,8 @@ import Contact from '@/pages/Contact';
 // Service Pages
 import Orthopedie from '@/pages/services/Orthopedie';
 import Traumatologie from '@/pages/services/Traumatologie';
+import Maintenance from '@/pages/services/Maintenance';
+import Formation from '@/pages/services/Formation';
 
 // Admin Pages
 import AdminLogin from '@/pages/admin/Login';
@@ -54,9 +56,12 @@ function App() {
           <Route element={<PublicLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/a-propos" element={<About />} />
-            <Route path="/services" element={<Orthopedie />} />
+            <Route path="/services" element={<Maintenance />} />
+            <Route path="/expertise" element={<Maintenance />} />
             <Route path="/services/orthopedie" element={<Orthopedie />} />
             <Route path="/services/traumatologie" element={<Traumatologie />} />
+            <Route path="/services/maintenance" element={<Maintenance />} />
+            <Route path="/services/formation" element={<Formation />} />
             <Route path="/produits" element={<Products />} />
             <Route path="/produits/:id" element={<ProductDetail />} />
             <Route path="/devis" element={<Quote />} />

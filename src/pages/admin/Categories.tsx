@@ -24,14 +24,16 @@ import {
   Edit2, 
   Trash2, 
   Bone,
-  Activity
+  Activity,
+  Monitor,
+  Stethoscope
 } from 'lucide-react';
 import { categories as initialCategories } from '@/data/products';
 
 interface Category {
   id: string;
   name: string;
-  slug: 'orthopedie' | 'traumatologie';
+  slug: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables';
   description: string;
   icon: string;
 }
@@ -134,6 +136,8 @@ export default function AdminCategories() {
                 >
                   <option value="orthopedie">orthopedie</option>
                   <option value="traumatologie">traumatologie</option>
+                  <option value="equipements">equipements</option>
+                  <option value="consommables">consommables</option>
                 </select>
               </div>
               
@@ -178,8 +182,12 @@ export default function AdminCategories() {
                       <div className="w-10 h-10 bg-[#1a8a7a]/10 rounded-lg flex items-center justify-center">
                         {category.slug === 'orthopedie' ? (
                           <Bone className="w-5 h-5 text-[#1a8a7a]" />
-                        ) : (
+                        ) : category.slug === 'traumatologie' ? (
                           <Activity className="w-5 h-5 text-[#1a8a7a]" />
+                        ) : category.slug === 'equipements' ? (
+                          <Monitor className="w-5 h-5 text-[#1a8a7a]" />
+                        ) : (
+                          <Stethoscope className="w-5 h-5 text-[#1a8a7a]" />
                         )}
                       </div>
                       <span className="font-medium text-gray-900">{category.name}</span>

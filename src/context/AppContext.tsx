@@ -43,8 +43,19 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const fetchData = async () => {
       if (!API_BASE_URL) {
         // Mode LocalStorage si pas d'API
-        const savedProducts = localStorage.getItem('dbc_products');
-        setProducts(savedProducts ? JSON.parse(savedProducts) : initialProducts);
+        const savedProductsRaw = localStorage.getItem('dbc_products');
+        let productsToSet = initialProducts;
+        
+        if (savedProductsRaw) {
+          const saved = JSON.parse(savedProductsRaw);
+          // Simple migration: if 'equipements' is missing in categories of saved products, re-sync with initialProducts
+          const hasNewCategories = saved.some((p: any) => p.category === 'equipements' || p.category === 'consommables');
+          if (hasNewCategories) {
+            productsToSet = saved;
+          }
+        }
+        
+        setProducts(productsToSet);
         
         const savedQuotes = localStorage.getItem('dbc_quotes');
         setQuoteRequests(savedQuotes ? JSON.parse(savedQuotes) : []);

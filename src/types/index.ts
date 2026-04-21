@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   description: string;
   fullDescription: string;
-  category: 'orthopedie' | 'traumatologie';
+  category: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables';
   subcategory: string;
   images: string[];
   specifications: Record<string, string>;
@@ -15,7 +15,7 @@ export interface Product {
 export interface Category {
   id: string;
   name: string;
-  slug: 'orthopedie' | 'traumatologie';
+  slug: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables';
   description: string;
   icon: string;
 }

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,7 +17,9 @@ import {
   Bone,
   Activity,
   Grid3X3,
-  List
+  List,
+  Monitor,
+  Stethoscope
 } from 'lucide-react';
 import { getSubcategories } from '@/data/products';
 import { useApp } from '@/context/AppContext';
@@ -28,18 +30,30 @@ type ViewMode = 'grid' | 'list';
 export default function Products() {
   const { products } = useApp();
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get('category') as 'orthopedie' | 'traumatologie' | null;
+  const initialCategory = searchParams.get('category') as 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables' | null;
   
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'orthopedie' | 'traumatologie'>(initialCategory || 'all');
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables'>(initialCategory || 'all');
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
 
+  // Sync state with URL params when they change
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category') as any;
+    if (categoryFromUrl && categoryFromUrl !== selectedCategory) {
+      setSelectedCategory(categoryFromUrl);
+      setSelectedSubcategory('all');
+    } else if (!categoryFromUrl && selectedCategory !== 'all') {
+      setSelectedCategory('all');
+      setSelectedSubcategory('all');
+    }
+  }, [searchParams]);
+
   const subcategories = useMemo(() => {
     if (selectedCategory === 'all') {
-      return [...getSubcategories('orthopedie'), ...getSubcategories('traumatologie')];
+      return [...getSubcategories('orthopedie'), ...getSubcategories('traumatologie'), ...getSubcategories('equipements'), ...getSubcategories('consommables')];
     }
-    return getSubcategories(selectedCategory);
+    return getSubcategories(selectedCategory as any);
   }, [selectedCategory]);
 
   const filteredProducts = useMemo(() => {
@@ -53,7 +67,7 @@ export default function Products() {
     });
   }, [searchQuery, selectedCategory, selectedSubcategory]);
 
-  const handleCategoryChange = (value: 'all' | 'orthopedie' | 'traumatologie') => {
+  const handleCategoryChange = (value: 'all' | 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables') => {
     setSelectedCategory(value);
     setSelectedSubcategory('all');
     if (value !== 'all') {
@@ -74,15 +88,26 @@ export default function Products() {
 
   return (
     <div className="min-h-screen pt-36 pb-16">
-      {/* Header */}
-      <section className="py-16 bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── PAGE HERO ── */}
+      <section className="relative py-20 bg-[#0d5c50] overflow-hidden mt-8">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000"
+            alt="ABC Synthèse – Produits"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a2e2a]/90 to-[#0d5c50]/90" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Notre Catalogue
+            <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
+              Catalogue 2026
+            </span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+              Nos Solutions Médicales
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Découvrez notre gamme complète de produits orthopédiques et traumatologiques.
+            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+              Explorez notre gamme complète d'orthopédie, traumatologie, équipements de bloc opératoire et consommables certifiés.
             </p>
           </div>
         </div>
@@ -122,6 +147,18 @@ export default function Products() {
                     <div className="flex items-center gap-2">
                       <Activity className="w-4 h-4" />
                       Traumatologie
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="equipements">
+                    <div className="flex items-center gap-2">
+                      <Monitor className="w-4 h-4" />
+                      Équipements Médicaux
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="consommables">
+                    <div className="flex items-center gap-2">
+                      <Stethoscope className="w-4 h-4" />
+                      Consommables
                     </div>
                   </SelectItem>
                 </SelectContent>
@@ -179,7 +216,10 @@ export default function Products() {
                 <span className="text-sm text-gray-500">Filtres actifs :</span>
                 {selectedCategory !== 'all' && (
                   <Badge variant="secondary" className="gap-1">
-                    {selectedCategory === 'orthopedie' ? 'Orthopédie' : 'Traumatologie'}
+                    {selectedCategory === 'orthopedie' ? 'Orthopédie' : 
+                     selectedCategory === 'traumatologie' ? 'Traumatologie' :
+                     selectedCategory === 'equipements' ? 'Équipements Médicaux' :
+                     selectedCategory === 'consommables' ? 'Consommables' : ''}
                     <X className="w-3 h-3 cursor-pointer" onClick={() => handleCategoryChange('all')} />
                   </Badge>
                 )}
