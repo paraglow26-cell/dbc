@@ -15,7 +15,6 @@ import {
   ChevronRight,
   Play,
   Star,
-  Phone,
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';

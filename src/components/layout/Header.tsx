@@ -33,7 +33,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [leaveTimeout, setLeaveTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [leaveTimeout, setLeaveTimeout] = useState<any | null>(null);
 
   const handleMouseEnter = (name: string) => {
     if (leaveTimeout) {

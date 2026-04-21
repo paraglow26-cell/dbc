@@ -1,11 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
-  GraduationCap, 
   CheckCircle2,
   Users,
-  BookOpen,
-  ArrowRight,
   Stethoscope,
   Video
 } from 'lucide-react';

@@ -1,15 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
-  Wrench, 
   Clock, 
-  CheckCircle2,
   Phone,
-  ArrowRight,
   ShieldCheck,
   Settings
 } from 'lucide-react';
-import QuoteButton from '@/components/ui-custom/QuoteButton';
+
 
 export default function Maintenance() {
   const navigate = useNavigate();
