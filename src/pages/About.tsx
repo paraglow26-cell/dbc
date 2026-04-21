@@ -3,7 +3,6 @@ import {
   Eye,
   Heart,
   Shield,
-  TrendingUp,
   Users,
   Award,
   CheckCircle2,
@@ -13,9 +12,10 @@ import {
   Bone,
   Activity,
   Microscope,
-  Monitor,
+  Cpu,
 } from 'lucide-react';
 import SectionHeader from '@/components/ui-custom/SectionHeader';
+import presidentImg from '@/assets/president.jpg';
 
 const values = [
   {
@@ -26,9 +26,9 @@ const values = [
     iconColor: 'text-blue-600',
   },
   {
-    icon: TrendingUp,
+    icon: Cpu,
     title: 'Innovation',
-    description: 'Investissement continu en R&D pour développer les solutions chirurgicales les plus avancées du marché.',
+    description: 'Pionnier dans l\'introduction de la robotique chirurgicale Cuvis Joint et des technologies d\'IA au Maroc.',
     color: 'bg-[#1a8a7a]/10',
     iconColor: 'text-[#1a8a7a]',
   },
@@ -49,53 +49,53 @@ const values = [
 ];
 
 const certifications = [
-  'Certification CE (MDR 2017/745)',
-  'ISO 13485 : Système de management de la qualité – Dispositifs médicaux',
-  'ISO 9001 : Norme internationale qualité',
-  'Autorisation Ministère de la Santé du Maroc',
-  'Conformité réglementaire ANAM & CHU',
+  'Certification ISO 13485 : Système de management de la qualité MD',
+  'Conformité rigoureuse aux standards CE (MDR 2017/745)',
+  'Autorisation du Ministère de la Santé (DMP)',
+  'Traçabilité totale informatisée des implants',
+  'Maintenance préventive certifiée constructeur',
 ];
 
 const timeline = [
   {
-    year: '2008',
-    title: 'Création de ABC Synthèse',
-    description: 'Fondation de l\'entreprise à Casablanca avec une vision claire : fournir des solutions orthopédiques de qualité aux professionnels marocains.',
+    year: '2016',
+    title: 'Fondation d\'ABC Synthèse',
+    description: 'Création de l\'entreprise avec une vision claire : moderniser l\'ostéosynthèse au Maroc.',
   },
   {
-    year: '2010',
-    title: 'Premier catalogue orthopédie',
-    description: 'Lancement du premier catalogue complet de prothèses de hanche, genou et épaule avec des marques leaders internationaux.',
-  },
-  {
-    year: '2014',
-    title: 'Certification ISO 13485',
-    description: 'Obtention de la certification qualité internationale pour les systèmes de management des dispositifs médicaux.',
-  },
-  {
-    year: '2017',
-    title: 'Expansion traumatologie',
-    description: 'Lancement de notre gamme complète de produits traumatologiques : plaques, vis, fixateurs externes.',
+    year: '2018',
+    title: 'Déploiement Opérationnel',
+    description: 'Démarrage effectif à Fès. Déploiement des gammes traumatologie et pédiatrie.',
   },
   {
     year: '2021',
-    title: 'Gamme équipements & SAV',
-    description: 'Développement du département équipements de bloc opératoire et renforcement du Service Après-Vente.',
+    title: 'Spécialisation Chirurgicale',
+    description: 'Intégration des spécialités Arthroscopie et Arthroplastie avec des partenaires mondiaux.',
   },
   {
     year: '2024',
-    title: 'Leader national',
-    description: 'ABC Synthèse devient l\'un des principaux distributeurs de dispositifs médicaux au Maroc avec 800+ références.',
+    title: 'Robotique Cuvis Joint',
+    description: 'Introduction du premier robot chirurgical de coupe active au Maroc en partenariat avec Curexo.',
+  },
+  {
+    year: '2025',
+    title: 'Hub Stratégique Casablanca',
+    description: 'Inauguration du nouveau siège national et déploiement de la plateforme ABC TRAINING.',
+  },
+  {
+    year: '2026',
+    title: 'Leader de l\'Ère Digitale',
+    description: 'ABC Synthèse devient l\'acteur clé de la chirurgie assistée par ordinateur au Royaume.',
   },
 ];
 
 const domaines = [
-  { icon: Bone, name: 'Orthopédie', desc: 'Prothèses totales hanche, genou, épaule' },
-  { icon: Activity, name: 'Traumatologie', desc: 'Plaques, vis, fixateurs, clous centromédullaires' },
-  { icon: Microscope, name: 'Biopsie & Diagnostic', desc: 'Aiguilles, systèmes d\'imagerie' },
-  { icon: Monitor, name: 'Équipements médicaux', desc: 'Bloc opératoire, endoscopie, écho' },
-  { icon: Shield, name: 'Consommables', desc: 'Stériles, certifiés CE, large stock' },
-  { icon: TrendingUp, name: 'SAV & Formation', desc: 'Maintenance préventive et formation terrain' },
+  { icon: Bone, name: 'Arthroplastie', desc: 'Prothèses totales hanche, genou, épaule (Permedica)' },
+  { icon: Activity, name: 'Traumatologie', desc: 'Plaques, vis, clous intramédullaires haut de gamme' },
+  { icon: Microscope, name: 'Arthroscopie', desc: 'Médecine sportive et réparation ligamentaire' },
+  { icon: Cpu, name: 'Neurochirurgie', desc: 'Implants rachidiens et cages intersomatiques' },
+  { icon: Shield, name: 'Chirurgie Thoracique', desc: 'Stabilisation costale et implants sternaux' },
+  { icon: Stethoscope, name: 'Consommable', desc: 'Sets opératoires et drapage stérile certifié' },
 ];
 
 export default function About() {
@@ -119,17 +119,17 @@ export default function About() {
                 À propos de<br />ABC Synthèse
               </h1>
               <p className="text-xl text-white/80 leading-relaxed">
-                Depuis 2008, ABC Synthèse accompagne les chirurgiens orthopédistes, traumatologues
-                et établissements de santé au Maroc avec des solutions médicales d'excellence,
-                certifiées et adaptées aux réalités du terrain.
+                Depuis 2016, ABC Synthèse accompagne les chirurgiens marocains avec des solutions 
+                médicales d'excellence. Notre slogan "Supporting Bones" incarne notre mission de 
+                restaurer la mobilité à travers l'innovation technologique.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 hidden lg:grid">
               {[
-                { label: '15+ ans', sub: "d'expertise" },
-                { label: '800+', sub: 'références catalogue' },
-                { label: 'ISO 13485', sub: 'certifié' },
-                { label: '50+', sub: 'partenaires' },
+                { label: '90+', sub: 'Collaborateurs' },
+                { label: '12', sub: 'Antennes Nationales' },
+                { label: '4', sub: 'Entrepôts' },
+                { label: 'ISO 13485', sub: 'Certifié' },
               ].map((s, i) => (
                 <div key={i} className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-white text-center">
                   <div className="text-3xl font-extrabold mb-1">{s.label}</div>
@@ -141,41 +141,40 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── INTRO ── */}
-      <section className="py-20 bg-white">
+      {/* ── MOT DU PRÉSIDENT ── */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-4">
-                Qui sommes-nous
-              </span>
-              <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-                Expert des dispositifs médicaux au Maroc
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                ABC Synthèse est une entreprise marocaine spécialisée dans la distribution et la
-                commercialisation de dispositifs médicaux. Nous répondons aux besoins des
-                professionnels de santé du secteur public et privé — chirurgiens, anesthésistes,
-                infirmiers et gestionnaires hospitaliers.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Notre catalogue couvre l'orthopédie, la traumatologie, les équipements de bloc
-                opératoire et les consommables stériles. Nous travaillons exclusivement avec des
-                marques de renommée internationale, soumises à des contrôles qualité rigoureux.
-              </p>
-            </div>
-            <div className="relative">
+             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=900"
-                  alt="ABC Synthèse – expertise médicale"
+                  src={presidentImg}
+                  alt="Dr. Badreddine SABAI REGRAGUI"
                   className="w-full h-auto"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 bg-[#1a8a7a] text-white p-5 rounded-2xl shadow-xl">
-                <Stethoscope className="w-8 h-8 mb-2" />
-                <div className="text-2xl font-extrabold">2008</div>
-                <div className="text-xs text-white/80 uppercase tracking-widest">Année de création</div>
+              <div className="absolute -bottom-5 -right-5 bg-[#1a8a7a] text-white p-6 rounded-2xl shadow-xl">
+                <div className="text-xl font-bold">Dr. B. SABAI REGRAGUI</div>
+                <div className="text-xs text-white/80 uppercase tracking-widest">Président Fondateur</div>
+              </div>
+            </div>
+            <div>
+              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-4">
+                Vision de la Direction
+              </span>
+              <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight italic">
+                "Plus qu'un distributeur, un partenaire clinique."
+              </h2>
+              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+                <p>
+                  ABC Synthèse est née d'une vision claire : devenir le partenaire privilégié de la communauté chirurgicale au Maroc en lui offrant des outils de classe mondiale.
+                </p>
+                <p className="font-medium text-gray-900">
+                  Notre expertise réside dans notre capacité à accompagner le chirurgien au cœur de son métier grâce à un support technique irréprochable et une formation continue via ABC TRAINING.
+                </p>
+                <p>
+                  En introduisant la robotique Cuvis Joint, nous confirmons notre engagement à effacer la barrière entre l'innovation internationale et le bloc opératoire marocain.
+                </p>
               </div>
             </div>
           </div>
@@ -198,10 +197,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Notre Mission</h3>
               <p className="text-gray-600 leading-relaxed">
-                Fournir aux professionnels de santé marocains des solutions orthopédiques,
-                traumatologiques et chirurgicales innovantes — sûres, réglementées et de haute
-                qualité — pour améliorer la qualité de vie des patients et accompagner les équipes
-                médicales au quotidien.
+                Rendre accessible aux praticiens marocains les technologies médicales les plus innovantes (Robotique, Navigation) pour améliorer la précision chirurgicale et les résultats cliniques des patients.
               </p>
             </div>
             <div className="bg-[#0d5c50] rounded-3xl p-10 shadow-sm text-white">
@@ -210,9 +206,8 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Notre Vision</h3>
               <p className="text-white/85 leading-relaxed">
-                Devenir le partenaire de référence des établissements de santé au Maroc et en
-                Afrique, reconnu pour notre excellence technique, notre innovation constante, notre
-                réactivité commerciale et notre engagement indéfectible envers la sécurité patient.
+                Devenir le catalyseur de la transformation chirurgicale au Maroc et en Afrique, 
+                reconnu pour notre excellence technique et notre plateforme de formation ABC TRAINING.
               </p>
             </div>
           </div>
@@ -253,7 +248,7 @@ export default function About() {
           <SectionHeader
             subtitle="Nos Valeurs"
             title="Ce qui nous guide chaque jour"
-            description="Nos valeurs fondamentales définissent notre culture d'entreprise et notre manière de travailler avec nos partenaires."
+            description="L'excellence, l'innovation et la proximité terrain sont les piliers de notre culture d'entreprise."
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, idx) => (
@@ -281,9 +276,8 @@ export default function About() {
                 Qualité et conformité garanties
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Tous nos produits sont soumis à des contrôles qualité rigoureux et respectent les
-                normes réglementaires les plus strictes. Notre engagement envers la qualité est
-                attesté par de nombreuses certifications internationales.
+                Tous nos produits sont soumis à des contrôles qualité rigoureux. Notre engagement 
+                envers la sécurité patient est attesté par la certification ISO 13485.
               </p>
               <ul className="space-y-4">
                 {certifications.map((cert, idx) => (
@@ -296,20 +290,20 @@ export default function About() {
                 ))}
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5] rounded-3xl p-10 text-white">
+            <div className="bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5] rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
               <Award className="w-16 h-16 mb-6 text-[#5dddc7]" />
               <h3 className="text-2xl font-bold mb-4">Excellence certifiée</h3>
               <p className="text-white/85 mb-8 leading-relaxed">
-                Notre système de management de la qualité est certifié ISO 13485, garantissant que
-                tous nos processus répondent aux exigences réglementaires internationales des
-                dispositifs médicaux.
+                Notre système de management est audité selon les standards internationaux, 
+                garantissant une sécurité maximale pour les établissements de santé.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { val: '100%', sub: 'Produits certifiés CE' },
-                  { val: 'ISO 13485', sub: 'Management qualité' },
-                  { val: '0', sub: 'Rappel de produit' },
-                  { val: '15+', sub: "Années de rigueur" },
+                  { val: '100%', sub: 'Traçabilité' },
+                  { val: 'ISO 13485', sub: 'Certifié' },
+                  { val: '12', sub: 'Antennes' },
+                  { val: '4', sub: "Entrepôts" },
                 ].map((s, i) => (
                   <div key={i} className="text-center bg-white/10 rounded-xl p-4">
                     <div className="text-2xl font-extrabold">{s.val}</div>
@@ -327,10 +321,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             subtitle="Notre Histoire"
-            title="Une histoire d'excellence depuis 2008"
-            description="Découvrez les moments clés qui ont façonné ABC Synthèse et construit notre leadership."
+            title="Une ascension guidée par l'innovation"
+            description="Découvrez les étapes clés qui ont fait d'ABC Synthèse le leader technologique actuel."
           />
-          <div className="relative">
+          <div className="relative mt-12">
             {/* Central line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#1a8a7a]/15 hidden lg:block" />
             <div className="space-y-10">
@@ -363,17 +357,17 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
-                Nous trouver
+                Réseau National
               </span>
-              <h2 className="text-4xl font-extrabold text-gray-900 mb-8">Notre siège social</h2>
+              <h2 className="text-4xl font-extrabold text-gray-900 mb-8">Maillage Territorial</h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center shrink-0">
                     <Building2 className="w-6 h-6 text-[#1a8a7a]" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900 mb-1">Siège Social & Showroom</div>
-                    <div className="text-gray-500">Bd Massira, Etg 1, Maarif, Casablanca, Maroc</div>
+                    <div className="font-bold text-gray-900 mb-1">Siège Social Stratégique</div>
+                    <div className="text-gray-500">Lot N° 35, Zone Industrielle, Route d'El Jadida, Casablanca, Maroc</div>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -381,22 +375,17 @@ export default function About() {
                     <MapPin className="w-6 h-6 text-[#1a8a7a]" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900 mb-1">Zone de couverture</div>
-                    <div className="text-gray-500">Tout le territoire national marocain et Afrique subsaharienne</div>
+                    <div className="font-bold text-gray-900 mb-1">12 Antennes de Proximité</div>
+                    <div className="text-gray-500">Expertise locale et logistique d'urgence assurées sur tout le Royaume.</div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="rounded-3xl overflow-hidden shadow-xl h-80">
-              <iframe
-                title="ABC Synthèse – Localisation"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.7!2d-7.6354!3d33.5950!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMaarif%2C+Casablanca!5e0!3m2!1sfr!2sma!4v1"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+              <img
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1000"
+                alt="ABC Synthèse – Casablanca Hub"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

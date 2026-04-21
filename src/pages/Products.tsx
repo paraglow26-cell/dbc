@@ -18,28 +18,39 @@ import {
   Activity,
   Grid3X3,
   List,
-  Monitor,
-  Stethoscope
+  Microscope,
+  Cpu,
+  Shield,
+  Syringe
 } from 'lucide-react';
-import { getSubcategories } from '@/data/products';
+import { getSubcategories, categories } from '@/data/products';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';
 
 type ViewMode = 'grid' | 'list';
 
+const categoryIcons: Record<string, any> = {
+  traumatologie: Activity,
+  arthroscopie: Microscope,
+  arthroplastie: Bone,
+  neurochirurgie: Cpu,
+  thoracique: Shield,
+  consommables: Syringe,
+};
+
 export default function Products() {
   const { products } = useApp();
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get('category') as 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables' | null;
+  const initialCategory = searchParams.get('category');
   
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables'>(initialCategory || 'all');
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
 
   // Sync state with URL params when they change
   useEffect(() => {
-    const categoryFromUrl = searchParams.get('category') as any;
+    const categoryFromUrl = searchParams.get('category');
     if (categoryFromUrl && categoryFromUrl !== selectedCategory) {
       setSelectedCategory(categoryFromUrl);
       setSelectedSubcategory('all');
@@ -51,10 +62,10 @@ export default function Products() {
 
   const subcategories = useMemo(() => {
     if (selectedCategory === 'all') {
-      return [...getSubcategories('orthopedie'), ...getSubcategories('traumatologie'), ...getSubcategories('equipements'), ...getSubcategories('consommables')];
+      return Array.from(new Set(products.map(p => p.subcategory)));
     }
-    return getSubcategories(selectedCategory as any);
-  }, [selectedCategory]);
+    return getSubcategories(selectedCategory);
+  }, [selectedCategory, products]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -65,9 +76,9 @@ export default function Products() {
       
       return matchesSearch && matchesCategory && matchesSubcategory;
     });
-  }, [searchQuery, selectedCategory, selectedSubcategory]);
+  }, [searchQuery, selectedCategory, selectedSubcategory, products]);
 
-  const handleCategoryChange = (value: 'all' | 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables') => {
+  const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
     setSelectedSubcategory('all');
     if (value !== 'all') {
@@ -86,6 +97,10 @@ export default function Products() {
 
   const hasActiveFilters = searchQuery || selectedCategory !== 'all' || selectedSubcategory !== 'all';
 
+  const getCategoryName = (slug: string) => {
+    return categories.find(c => c.slug === slug)?.name || slug;
+  };
+
   return (
     <div className="min-h-screen pt-36 pb-16">
       {/* ── PAGE HERO ── */}
@@ -101,13 +116,13 @@ export default function Products() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
-              Catalogue 2026
+              Catalogue Officiel 2026
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
               Nos Solutions Médicales
             </h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-              Explorez notre gamme complète d'orthopédie, traumatologie, équipements de bloc opératoire et consommables certifiés.
+              Explorez nos {categories.length} pôles de spécialité : Arthroplastie, Traumatologie, Arthroscopie, Neurochirurgie, Thoracique et Consommables.
             </p>
           </div>
         </div>
@@ -123,50 +138,37 @@ export default function Products() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
-                  placeholder="Rechercher un produit..."
+                  placeholder="Rechercher par nom ou référence..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-10"
                 />
               </div>
 
               {/* Category Filter */}
               <Select value={selectedCategory} onValueChange={handleCategoryChange}>
-                <SelectTrigger className="w-full lg:w-48">
-                  <SelectValue placeholder="Catégorie" />
+                <SelectTrigger className="w-full lg:w-64">
+                  <SelectValue placeholder="Toutes les spécialités" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Toutes les catégories</SelectItem>
-                  <SelectItem value="orthopedie">
-                    <div className="flex items-center gap-2">
-                      <Bone className="w-4 h-4" />
-                      Orthopédie
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="traumatologie">
-                    <div className="flex items-center gap-2">
-                      <Activity className="w-4 h-4" />
-                      Traumatologie
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="equipements">
-                    <div className="flex items-center gap-2">
-                      <Monitor className="w-4 h-4" />
-                      Équipements Médicaux
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="consommables">
-                    <div className="flex items-center gap-2">
-                      <Stethoscope className="w-4 h-4" />
-                      Consommables
-                    </div>
-                  </SelectItem>
+                  <SelectItem value="all">Toutes les spécialités</SelectItem>
+                  {categories.map((cat) => {
+                    const Icon = categoryIcons[cat.slug] || Activity;
+                    return (
+                      <SelectItem key={cat.id} value={cat.slug}>
+                        <div className="flex items-center gap-2">
+                          <Icon className="w-4 h-4" />
+                          {cat.name}
+                        </div>
+                      </SelectItem>
+                    );
+                  })}
                 </SelectContent>
               </Select>
 
               {/* Subcategory Filter */}
               <Select value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
-                <SelectTrigger className="w-full lg:w-48">
+                <SelectTrigger className="w-full lg:w-56">
                   <SelectValue placeholder="Sous-catégorie" />
                 </SelectTrigger>
                 <SelectContent>
@@ -215,11 +217,8 @@ export default function Products() {
               <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t">
                 <span className="text-sm text-gray-500">Filtres actifs :</span>
                 {selectedCategory !== 'all' && (
-                  <Badge variant="secondary" className="gap-1">
-                    {selectedCategory === 'orthopedie' ? 'Orthopédie' : 
-                     selectedCategory === 'traumatologie' ? 'Traumatologie' :
-                     selectedCategory === 'equipements' ? 'Équipements Médicaux' :
-                     selectedCategory === 'consommables' ? 'Consommables' : ''}
+                  <Badge variant="secondary" className="gap-1 bg-[#1a8a7a]/10 text-[#1a8a7a] border-0">
+                    {getCategoryName(selectedCategory)}
                     <X className="w-3 h-3 cursor-pointer" onClick={() => handleCategoryChange('all')} />
                   </Badge>
                 )}
@@ -235,6 +234,9 @@ export default function Products() {
                     <X className="w-3 h-3 cursor-pointer" onClick={() => setSearchQuery('')} />
                   </Badge>
                 )}
+                <button onClick={clearFilters} className="text-xs text-red-500 hover:underline ml-auto font-medium">
+                  Réinitialiser tout
+                </button>
               </div>
             )}
           </div>

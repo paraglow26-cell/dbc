@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   description: string;
   fullDescription: string;
-  category: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables';
+  category: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables' | 'arthroplastie' | 'arthroscopie' | 'neurochirurgie' | 'thoracique';
   subcategory: string;
   images: string[];
   specifications: Record<string, string>;
@@ -15,7 +15,7 @@ export interface Product {
 export interface Category {
   id: string;
   name: string;
-  slug: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables';
+  slug: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables' | 'arthroplastie' | 'arthroscopie' | 'neurochirurgie' | 'thoracique';
   description: string;
   icon: string;
 }

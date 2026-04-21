@@ -11,10 +11,12 @@ const navItems = [
     name: 'Nos Solutions',
     href: '/produits',
     children: [
-      { name: 'Orthopédie', href: '/produits?category=orthopedie', desc: 'Prothèses & implants' },
-      { name: 'Traumatologie', href: '/produits?category=traumatologie', desc: 'Plaques, vis & fixateurs' },
-      { name: 'Équipements Médicaux', href: '/produits?category=equipements', desc: 'Blocs opératoires' },
-      { name: 'Consommables', href: '/produits?category=consommables', desc: 'Stériles & certifiés' },
+      { name: 'Arthroplastie', href: '/produits?category=arthroplastie', desc: 'Prothèses hanche, genou, épaule' },
+      { name: 'Traumatologie', href: '/produits?category=traumatologie', desc: 'Fixation interne & fractures' },
+      { name: 'Arthroscopie', href: '/produits?category=arthroscopie', desc: 'Médecine du sport' },
+      { name: 'Neurochirurgie', href: '/produits?category=neurochirurgie', desc: 'Rachis & arthrodèse' },
+      { name: 'Chirurgie Thoracique', href: '/produits?category=thoracique', desc: 'Stabilisation costale' },
+      { name: 'Consommables', href: '/produits?category=consommables', desc: 'Sets & accessoires de bloc' },
     ],
   },
   {

@@ -45,13 +45,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         // Mode LocalStorage si pas d'API
         const savedProductsRaw = localStorage.getItem('dbc_products');
         let productsToSet = initialProducts;
-        
+
         if (savedProductsRaw) {
-          const saved = JSON.parse(savedProductsRaw);
-          // Simple migration: if 'equipements' is missing in categories of saved products, re-sync with initialProducts
-          const hasNewCategories = saved.some((p: any) => p.category === 'equipements' || p.category === 'consommables');
-          if (hasNewCategories) {
-            productsToSet = saved;
+          try {
+            const saved = JSON.parse(savedProductsRaw);
+            if (Array.isArray(saved) && saved.length > 0) {
+              productsToSet = saved;
+            }
+          } catch (e) {
+            console.error("Failed to parse saved products", e);
           }
         }
         
@@ -62,6 +64,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         
         const savedMessages = localStorage.getItem('dbc_messages');
         setContactMessages(savedMessages ? JSON.parse(savedMessages) : []);
+        
         setIsLoading(false);
         return;
       }
@@ -106,10 +109,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   // Sauvegarde LocalStorage en mode fallback
   useEffect(() => {
-    if (!API_BASE_URL) {
+    if (!API_BASE_URL && !isLoading) {
       localStorage.setItem('dbc_products', JSON.stringify(products));
     }
-  }, [products]);
+  }, [products, isLoading]);
 
   useEffect(() => {
     localStorage.setItem('dbc_is_admin', isAdmin.toString());
@@ -117,37 +120,43 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   // Actions Produits
   const addProduct = useCallback(async (product: Product) => {
-    setProducts(prev => [...prev, product]);
-    if (API_BASE_URL) {
-      try {
-        await fetch(`${API_BASE_URL}/products.php`, {
+    setProducts(prev => {
+      const newProducts = [...prev, product];
+      if (API_BASE_URL) {
+        fetch(`${API_BASE_URL}/products.php`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(product)
-        });
-      } catch (error) {
-        console.error("Erreur API addProduct:", error);
+        }).then(res => res.json())
+          .then(data => {
+            if (!data.success) console.warn("L'API MySQL n'a pas pu créer le produit:", data.error);
+          })
+          .catch(err => console.error("Erreur réseau API addProduct:", err));
       }
-    }
+      return newProducts;
+    });
   }, []);
 
   const updateProduct = useCallback(async (id: string, updates: Partial<Product>) => {
-    setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
-    if (API_BASE_URL) {
-      const product = products.find(p => p.id === id);
-      if (product) {
-        try {
-          await fetch(`${API_BASE_URL}/products.php?id=${id}`, {
+    setProducts(prev => {
+      const newProducts = prev.map(p => p.id === id ? { ...p, ...updates } : p);
+      if (API_BASE_URL) {
+        const updatedProduct = newProducts.find(p => p.id === id);
+        if (updatedProduct) {
+          fetch(`${API_BASE_URL}/products.php?id=${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...product, ...updates })
-          });
-        } catch (error) {
-          console.error("Erreur API updateProduct:", error);
+            body: JSON.stringify(updatedProduct)
+          }).then(res => res.json())
+            .then(data => {
+              if (!data.success) console.warn("L'API MySQL n'a pas pu enregistrer les changements:", data.error);
+            })
+            .catch(err => console.error("Erreur réseau API:", err));
         }
       }
-    }
-  }, [products]);
+      return newProducts;
+    });
+  }, []);
 
   const deleteProduct = useCallback(async (id: string) => {
     setProducts(prev => prev.filter(p => p.id !== id));

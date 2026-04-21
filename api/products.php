@@ -42,7 +42,7 @@ switch($method) {
             exit;
         }
 
-        $stmt = $pdo->prepare("INSERT INTO products (id, name, category, subcategory, description, fullDescription, images, features, specifications, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO products (id, name, category, subcategory, description, fullDescription, images, features, specifications, featured, technicalSheet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
         $success = $stmt->execute([
             $data['id'],
@@ -54,7 +54,8 @@ switch($method) {
             json_encode($data['images']),
             json_encode($data['features']),
             json_encode($data['specifications']),
-            $data['featured'] ? 1 : 0
+            isset($data['featured']) && $data['featured'] ? 1 : 0,
+            $data['technicalSheet'] ?? ''
         ]);
 
         echo json_encode(["success" => $success]);
@@ -70,7 +71,7 @@ switch($method) {
             exit;
         }
 
-        $stmt = $pdo->prepare("UPDATE products SET name=?, category=?, subcategory=?, description=?, fullDescription=?, images=?, features=?, specifications=?, featured=? WHERE id=?");
+        $stmt = $pdo->prepare("UPDATE products SET name=?, category=?, subcategory=?, description=?, fullDescription=?, images=?, features=?, specifications=?, featured=?, technicalSheet=? WHERE id=?");
         
         $success = $stmt->execute([
             $data['name'],
@@ -81,7 +82,8 @@ switch($method) {
             json_encode($data['images']),
             json_encode($data['features']),
             json_encode($data['specifications']),
-            $data['featured'] ? 1 : 0,
+            isset($data['featured']) && $data['featured'] ? 1 : 0,
+            $data['technicalSheet'] ?? '',
             $id
         ]);
 

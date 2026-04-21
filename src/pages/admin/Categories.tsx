@@ -25,27 +25,31 @@ import {
   Trash2, 
   Bone,
   Activity,
-  Monitor,
-  Stethoscope
+  Microscope,
+  Cpu,
+  Shield,
+  Syringe
 } from 'lucide-react';
 import { categories as initialCategories } from '@/data/products';
+import type { Category } from '@/types';
 
-interface Category {
-  id: string;
-  name: string;
-  slug: 'orthopedie' | 'traumatologie' | 'equipements' | 'consommables';
-  description: string;
-  icon: string;
-}
+const categoryIcons: Record<string, any> = {
+  traumatologie: Activity,
+  arthroscopie: Microscope,
+  arthroplastie: Bone,
+  neurochirurgie: Cpu,
+  thoracique: Shield,
+  consommables: Syringe,
+};
 
 export default function AdminCategories() {
-  const [categories, setCategories] = useState<Category[]>(initialCategories as Category[]);
+  const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   
   const [formData, setFormData] = useState<Partial<Category>>({
     name: '',
-    slug: 'orthopedie',
+    slug: 'arthroplastie',
     description: '',
     icon: 'Bone',
   });
@@ -71,7 +75,7 @@ export default function AdminCategories() {
   const resetForm = () => {
     setFormData({
       name: '',
-      slug: 'orthopedie',
+      slug: 'arthroplastie',
       description: '',
       icon: 'Bone',
     });
@@ -100,52 +104,56 @@ export default function AdminCategories() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Gestion des catégories</h2>
-          <p className="text-gray-500">Organisez vos produits par catégorie</p>
+          <h2 className="text-2xl font-bold text-gray-900">Gestion des Pôles</h2>
+          <p className="text-gray-500">Définissez les spécialités médicales du catalogue</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={handleAddNew} className="bg-[#1a8a7a]">
               <Plus className="w-4 h-4 mr-2" />
-              Ajouter une catégorie
+              Nouveau Pôle
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>
-                {editingCategory ? 'Modifier la catégorie' : 'Ajouter une catégorie'}
+                {editingCategory ? 'Modifier la spécialité' : 'Créer un nouveau pôle'}
               </DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
               <div className="space-y-2">
-                <Label>Nom *</Label>
+                <Label>Nom d'affichage *</Label>
                 <Input
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="ex: Arthroplastie"
                   required
                 />
               </div>
               
               <div className="space-y-2">
-                <Label>Slug *</Label>
+                <Label>ID Technique (Slug) *</Label>
                 <select
                   value={formData.slug}
-                  onChange={(e) => setFormData({ ...formData, slug: e.target.value as 'orthopedie' | 'traumatologie' })}
+                  onChange={(e) => setFormData({ ...formData, slug: e.target.value as any })}
                   className="w-full p-2 border rounded-md"
                   required
                 >
-                  <option value="orthopedie">orthopedie</option>
+                  <option value="arthroplastie">arthroplastie</option>
                   <option value="traumatologie">traumatologie</option>
-                  <option value="equipements">equipements</option>
+                  <option value="arthroscopie">arthroscopie</option>
+                  <option value="neurochirurgie">neurochirurgie</option>
+                  <option value="thoracique">thoracique</option>
                   <option value="consommables">consommables</option>
                 </select>
               </div>
               
               <div className="space-y-2">
-                <Label>Description</Label>
+                <Label>Description Courte</Label>
                 <Input
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Résumé de la spécialité"
                 />
               </div>
               
@@ -154,7 +162,7 @@ export default function AdminCategories() {
                   Annuler
                 </Button>
                 <Button type="submit" className="bg-[#1a8a7a]">
-                  {editingCategory ? 'Mettre à jour' : 'Ajouter'}
+                  {editingCategory ? 'Sauvegarder' : 'Créer'}
                 </Button>
               </div>
             </form>
@@ -163,57 +171,52 @@ export default function AdminCategories() {
       </div>
 
       {/* Categories Table */}
-      <Card>
+      <Card className="rounded-2xl overflow-hidden border-gray-100">
         <CardContent className="p-0">
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-gray-50">
               <TableRow>
-                <TableHead>Catégorie</TableHead>
+                <TableHead>Pôle Médical</TableHead>
                 <TableHead>Slug</TableHead>
                 <TableHead>Description</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {categories.map((category) => (
-                <TableRow key={category.id}>
-                  <TableCell>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-[#1a8a7a]/10 rounded-lg flex items-center justify-center">
-                        {category.slug === 'orthopedie' ? (
-                          <Bone className="w-5 h-5 text-[#1a8a7a]" />
-                        ) : category.slug === 'traumatologie' ? (
-                          <Activity className="w-5 h-5 text-[#1a8a7a]" />
-                        ) : category.slug === 'equipements' ? (
-                          <Monitor className="w-5 h-5 text-[#1a8a7a]" />
-                        ) : (
-                          <Stethoscope className="w-5 h-5 text-[#1a8a7a]" />
-                        )}
+              {categories.map((category) => {
+                const Icon = categoryIcons[category.slug] || Activity;
+                return (
+                  <TableRow key={category.id}>
+                    <TableCell>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#1a8a7a]/5 rounded-lg flex items-center justify-center border border-[#1a8a7a]/10">
+                          <Icon className="w-5 h-5 text-[#1a8a7a]" />
+                        </div>
+                        <span className="font-bold text-gray-900">{category.name}</span>
                       </div>
-                      <span className="font-medium text-gray-900">{category.name}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">{category.slug}</Badge>
-                  </TableCell>
-                  <TableCell>{category.description}</TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex items-center justify-end gap-2">
-                      <Button variant="ghost" size="icon" onClick={() => handleEdit(category)}>
-                        <Edit2 className="w-4 h-4" />
-                      </Button>
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className="text-red-500 hover:text-red-600"
-                        onClick={() => handleDelete(category.id)}
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="outline" className="bg-white text-gray-500 font-mono text-xs">{category.slug}</Badge>
+                    </TableCell>
+                    <TableCell className="text-gray-500 text-sm max-w-sm truncate">{category.description}</TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex items-center justify-end gap-2">
+                        <Button variant="ghost" size="icon" onClick={() => handleEdit(category)}>
+                          <Edit2 className="w-4 h-4" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="text-red-400 hover:text-red-600 hover:bg-red-50"
+                          onClick={() => handleDelete(category.id)}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </CardContent>
