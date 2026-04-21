@@ -87,17 +87,25 @@ export default function AdminProducts() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Ensure we have all baseline arrays/objects even if empty
+    const submissionData: Product = {
+      ...(editingProduct || { id: `prod-${Date.now()}` }), // Preserve ID if editing
+      name: formData.name || '',
+      description: formData.description || '',
+      fullDescription: formData.fullDescription || '',
+      category: formData.category || 'arthroplastie',
+      subcategory: formData.subcategory || '',
+      featured: !!formData.featured,
+      technicalSheet: formData.technicalSheet || '',
+      images: formData.images || [],
+      features: formData.features || [],
+      specifications: formData.specifications || {},
+    } as Product;
+
     if (editingProduct) {
-      updateProduct(editingProduct.id, formData);
+      updateProduct(editingProduct.id, submissionData);
     } else {
-      const newProduct: Product = {
-        ...formData as Product,
-        id: `prod-${Date.now()}`,
-        images: formData.images || [],
-        features: formData.features || [],
-        specifications: formData.specifications || {},
-      };
-      addProduct(newProduct);
+      addProduct(submissionData);
     }
     
     setIsDialogOpen(false);

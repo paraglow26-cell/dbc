@@ -327,26 +327,35 @@ export default function Home() {
 
 
       {/* ── NOS PARTENAIRES ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
+      <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
               Réseau Mondial
             </span>
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Nos Partenaires</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed italic">
-              ABC SYNTHESE s'appuie sur un réseau de plus de 20 partenaires fabricants internationaux, 
-              sélectionnés pour l'excellence de leurs technologies.
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Nos Partenaires</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
+              ABC SYNTHESE s'appuie sur des partenaires fabricants internationaux d'excellence.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 items-center">
             {[
-              'Permedica', 'Next Shoulder', 'PUSM', 'SAMAY Surgical', 'Tabibfarma',
-              'ZimED', 'CareFix', 'Ortimplant', 'BMT', 'Zo'
-            ].map((partner, i) => (
-              <div key={i} className="h-24 bg-gray-50 rounded-2xl flex items-center justify-center p-6 border border-gray-100 grayscale hover:grayscale-0 hover:border-[#1a8a7a]/30 transition-all cursor-crosshair">
-                 <span className="text-gray-400 font-black text-sm uppercase tracking-tighter text-center">{partner}</span>
+              "WhatsApp Image 2026-04-21 at 14.21.59 (1).jpeg",
+              "WhatsApp Image 2026-04-21 at 14.21.59 (2).jpeg",
+              "WhatsApp Image 2026-04-21 at 14.21.59 (3).jpeg",
+              "WhatsApp Image 2026-04-21 at 14.21.59 (4).jpeg",
+              "WhatsApp Image 2026-04-21 at 14.21.59 (5).jpeg",
+              "WhatsApp Image 2026-04-21 at 14.21.59 (6).jpeg",
+              "WhatsApp Image 2026-04-21 at 14.21.59.jpeg",
+              "WhatsApp Image 2026-04-21 at 14.22.00.jpeg"
+            ].map((img, i) => (
+              <div key={i} className="h-24 flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
+                <img 
+                  src={`/Partenaires/${img}`} 
+                  alt="Partenaire" 
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
             ))}
           </div>
@@ -354,26 +363,31 @@ export default function Home() {
       </section>
 
       {/* ── NOS RÉFÉRENCES ── */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
+      <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
               Confiance & Crédibilité
             </span>
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Nos Références</h2>
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Nos Références</h2>
             <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
               Ils nous font confiance pour la fourniture de leurs dispositifs médicaux critiques.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
             {[
-              'CHU Hassan II', 'CHU Mohammed VI', 'Akdital', 'CNSS', 'CIM Ibn Zohr',
-              'Clinique Mekka', 'Int. Clinic', 'Ghandi Clinic', 'Ako Medical', 'Al Qods',
-              'Riad Annakhil', 'CIB Al Badie', 'Clinique Maghreb', 'Clinique Anoual', 'Arrayane', 'Beau Séjour'
-            ].map((ref, i) => (
-              <div key={i} className="bg-white p-4 rounded-xl border border-gray-100 flex items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow h-20">
-                <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase leading-none">{ref}</span>
+              "akdital.png", "chu hassan 2.png", "chu.png", "chu2.png", "clinique ibn zhor.png", "cnss.png",
+              "hopital international.png", "hopital mohamed 6.png", "Image11.png", "Image15.png",
+              "Image16.png", "Image17.png", "Image18.png", "Image19.png", "Image20.png",
+              "Image21.png", "Image22.png", "Image23.png"
+            ].map((img, i) => (
+              <div key={i} className="h-20 bg-white p-3 rounded-xl border border-gray-100 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                <img 
+                  src={`/references/${img}`} 
+                  alt="Référence" 
+                  className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all"
+                />
               </div>
             ))}
           </div>

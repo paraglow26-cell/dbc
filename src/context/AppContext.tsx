@@ -79,6 +79,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         const pData = await pRes.json();
         setProducts((Array.isArray(pData) ? pData : initialProducts).map(p => ({
           ...p,
+          // Force MySQL TINYINT (1/0 or "1"/"0") to pure JS boolean
+          featured: p.featured === 1 || p.featured === "1" || p.featured === true,
           createdAt: p.createdAt || p.created_at
         })));
 
@@ -129,9 +131,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           body: JSON.stringify(product)
         }).then(res => res.json())
           .then(data => {
-            if (!data.success) console.warn("L'API MySQL n'a pas pu créer le produit:", data.error);
+            if (!data.success) {
+              console.warn("L'API MySQL n'a pas pu créer le produit:", data.error);
+              alert("Erreur de création MySQL: " + (data.error || "Problème inconnu."));
+            }
           })
-          .catch(err => console.error("Erreur réseau API addProduct:", err));
+          .catch(err => {
+            console.error("Erreur réseau API addProduct:", err);
+            alert("Erreur réseau: Impossible d'ajouter le produit au serveur.");
+          });
       }
       return newProducts;
     });
