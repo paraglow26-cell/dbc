@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import CountUp from 'react-countup';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -21,10 +23,10 @@ import ProductCard from '@/components/ui-custom/ProductCard';
 import QuoteButton from '@/components/ui-custom/QuoteButton';
 
 const stats = [
-  { value: '10+', label: "Ans d'Excellence", icon: Award },
-  { value: '90+', label: 'Collaborateurs', icon: Users },
-  { value: '12', label: 'Antennes Nationales', icon: Map },
-  { value: '20+', label: 'Partenaires mondiaux', icon: Shield },
+  { value: 15, suffix: '+', label: "Ans d'Excellence", icon: Award },
+  { value: 90, suffix: '+', label: 'Collaborateurs', icon: Users },
+  { value: 12, suffix: '', label: 'Antennes Nationales', icon: Map },
+  { value: 20, suffix: '+', label: 'Partenaires mondiaux', icon: Shield },
 ];
 
 const specialites = [
@@ -107,17 +109,32 @@ export default function Home() {
   const { products } = useApp();
   const featuredProducts = products.filter((p) => p.featured);
 
-  const heroImages = [
-    "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=85&w=2400",
-    "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=85&w=2400",
-    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=85&w=2400"
+  const heroSlides = [
+    {
+      image: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=85&w=2400",
+      badge: "Supporting Bones — Distributeur de Référence",
+      title: <>L'Innovation au<br />Service des <span className="text-[#00a49a]">Os</span></>,
+      description: "ABC Synthèse accompagne les chirurgiens avec des solutions implantables de pointe et une assistance terrain spécialisée."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=85&w=2400",
+      badge: "Expertise & Fiabilité",
+      title: <>Solutions <span className="text-[#00a49a]">Orthopédiques</span><br />Sur Mesure</>,
+      description: "Découvrez notre gamme complète d'implants pour l'arthroplastie et la traumatologie, certifiés ISO 13485."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=85&w=2400",
+      badge: "Formation Continue",
+      title: <>L'Excellence <span className="text-[#00a49a]">Clinique</span><br />Avant Tout</>,
+      description: "Nous formons les équipes médicales sur les dernières technologies pour garantir les meilleurs résultats pour vos patients."
+    }
   ];
 
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIdx((prev) => (prev + 1) % heroImages.length);
+      setCurrentImageIdx((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -127,31 +144,50 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="relative pt-32 pb-48 overflow-hidden bg-slate-900">
         <div className="absolute inset-0">
-          {heroImages.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt="ABC Synthèse – SUPPORTING BONES"
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ${
-                idx === currentImageIdx ? 'opacity-40' : 'opacity-0'
-              }`}
+          <AnimatePresence>
+            <motion.img
+              key={`img-${currentImageIdx}`}
+              src={heroSlides[currentImageIdx].image}
+              alt="ABC Synthèse"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 0.4, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover"
             />
-          ))}
+          </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-b from-[#004c47]/80 via-transparent to-[#004c47]/95" />
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12">
-          <Badge className="bg-white/10 text-white border border-white/20 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full">
-            Supporting Bones — Distributeur de Référence
-          </Badge>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-white drop-shadow-xl">
-            L'Innovation au<br />Service des <span className="text-[#00a49a]">Os</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-md font-medium">
-            ABC Synthèse accompagne les chirurgiens avec des solutions 
-            implantables de pointe et une assistance terrain spécialisée.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12 min-h-[300px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`content-${currentImageIdx}`}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <Badge className="bg-white/10 text-white border border-white/20 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full">
+                {heroSlides[currentImageIdx].badge}
+              </Badge>
+              
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-white drop-shadow-xl">
+                {heroSlides[currentImageIdx].title}
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-md font-medium">
+                {heroSlides[currentImageIdx].description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-6"
+          >
             <Button
               onClick={() => navigate('/produits')}
               size="lg"
@@ -167,12 +203,18 @@ export default function Home() {
               <Play className="w-5 h-5" />
               Profil Entreprise
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── STATS BAR (Overlapping Hero) ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 mb-16">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 mb-16"
+      >
         <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 border border-gray-100">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
             {stats.map((stat, idx) => (
@@ -180,7 +222,9 @@ export default function Home() {
                 <div className="w-14 h-14 mx-auto bg-[#f0f9f8] rounded-full flex items-center justify-center mb-5">
                   <stat.icon className="w-7 h-7 text-[#00a49a]" />
                 </div>
-                <div className="text-4xl font-black text-gray-900 mb-2">{stat.value}</div>
+                <div className="text-4xl font-black text-gray-900 mb-2">
+                  <CountUp end={stat.value} suffix={stat.suffix} enableScrollSpy scrollSpyOnce />
+                </div>
                 <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">
                   {stat.label}
                 </div>
@@ -188,10 +232,16 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── APPRENDRE À NOUS CONNAÎTRE (ABOUT) ── */}
-      <section className="py-24 bg-white overflow-hidden">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-24 bg-white overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative group">
@@ -202,7 +252,9 @@ export default function Home() {
                 className="relative rounded-3xl shadow-xl border border-gray-100 object-cover h-[500px] w-full"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-                <div className="text-4xl font-black text-[#00a49a] mb-1">15+</div>
+                <div className="text-4xl font-black text-[#00a49a] mb-1">
+                  <CountUp end={15} suffix="+" enableScrollSpy scrollSpyOnce />
+                </div>
                 <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">
                   Années d'Expertise
                 </div>
@@ -248,10 +300,16 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── NOS SPÉCIALITÉS ── */}
-      <section className="py-24 bg-gray-50">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-24 bg-gray-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
@@ -287,10 +345,16 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── FEATURED PRODUCTS ── */}
-      <section className="py-24 bg-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-24 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-14">
             <div>
@@ -315,10 +379,16 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── ACTUALITÉS ── */}
-      <section className="py-24 bg-gray-50">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-24 bg-gray-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-extrabold text-gray-900">Actualités & Événements</h2>
@@ -348,11 +418,17 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
 
       {/* ── NOS PARTENAIRES ── */}
-      <section className="py-20 bg-white border-t border-gray-100">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-white border-t border-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
@@ -364,31 +440,49 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 items-center">
-            {[
-              "WhatsApp Image 2026-04-21 at 14.21.59 (1).jpeg",
-              "WhatsApp Image 2026-04-21 at 14.21.59 (2).jpeg",
-              "WhatsApp Image 2026-04-21 at 14.21.59 (3).jpeg",
-              "WhatsApp Image 2026-04-21 at 14.21.59 (4).jpeg",
-              "WhatsApp Image 2026-04-21 at 14.21.59 (5).jpeg",
-              "WhatsApp Image 2026-04-21 at 14.21.59 (6).jpeg",
-              "WhatsApp Image 2026-04-21 at 14.21.59.jpeg",
-              "WhatsApp Image 2026-04-21 at 14.22.00.jpeg"
-            ].map((img, i) => (
-              <div key={i} className="h-24 flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300">
-                <img 
-                  src={`/Partenaires/${img}`} 
-                  alt="Partenaire" 
-                  className="max-h-full max-w-full object-contain"
-                />
-              </div>
-            ))}
+          <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+              {[
+                "WhatsApp Image 2026-04-21 at 14.21.59 (1).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (2).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (3).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (4).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (5).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (6).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.22.00.jpeg"
+              ].map((img, i) => (
+                <li key={i} className="h-24 flex items-center justify-center transition-all duration-300">
+                  <img src={`/Partenaires/${img}`} alt="Partenaire" className="h-24 w-auto object-contain px-4" />
+                </li>
+              ))}
+            </ul>
+            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+              {[
+                "WhatsApp Image 2026-04-21 at 14.21.59 (1).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (2).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (3).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (4).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (5).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.21.59 (6).jpeg",
+                "WhatsApp Image 2026-04-21 at 14.22.00.jpeg"
+              ].map((img, i) => (
+                <li key={i} className="h-24 flex items-center justify-center transition-all duration-300">
+                  <img src={`/Partenaires/${img}`} alt="Partenaire" className="h-24 w-auto object-contain px-4" />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── NOS RÉFÉRENCES ── */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-gray-50 border-y border-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
@@ -411,16 +505,22 @@ export default function Home() {
                 <img 
                   src={`/references/${img}`} 
                   alt="Référence" 
-                  className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all"
+                  className="max-h-full max-w-full object-contain transition-all"
                 />
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── CTA FINAL ── */}
-      <section className="py-24 relative overflow-hidden bg-[#f0f9f8]">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-24 relative overflow-hidden bg-[#f0f9f8]"
+      >
         <div className="absolute inset-0 opacity-[0.03]">
           <div
             className="w-full h-full"
@@ -455,7 +555,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

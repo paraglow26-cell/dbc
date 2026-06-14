@@ -11,6 +11,7 @@ import Products from '@/pages/Products';
 import ProductDetail from '@/pages/ProductDetail';
 import Quote from '@/pages/Quote';
 import Contact from '@/pages/Contact';
+import Careers from '@/pages/Careers';
 
 // Service Pages
 import Orthopedie from '@/pages/services/Orthopedie';
@@ -66,6 +67,7 @@ function App() {
             <Route path="/produits/:id" element={<ProductDetail />} />
             <Route path="/devis" element={<Quote />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/carriere" element={<Careers />} />
           </Route>
         </Routes>
       </Router>

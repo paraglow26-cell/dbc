@@ -9,7 +9,7 @@ import {
   Clock,
   ArrowUp,
 } from 'lucide-react';
-import logo from '@/assets/logo-dbc.png';
+import logo from '@/assets/logo-dbc-new.jpg';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -25,9 +25,9 @@ export default function Footer() {
 
             {/* ── Column 1 : Brand & Social ── */}
             <div className="space-y-6">
-              <Link to="/" className="inline-block">
-                <div className="bg-white rounded-lg px-4 py-3 inline-block">
-                  <img src={logo} alt="ABC Synthèse" className="h-12 w-auto" />
+              <Link to="/" className="inline-block mb-2">
+                <div className="bg-white rounded-xl px-4 py-3 inline-block">
+                  <img src={logo} alt="ABC Synthèse" className="h-14 w-auto" />
                 </div>
               </Link>
               <p className="text-white/80 text-sm leading-relaxed">

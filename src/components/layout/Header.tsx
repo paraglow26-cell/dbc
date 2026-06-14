@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo-dbc.png';
+import logo from '@/assets/logo-dbc-new.jpg';
 
 const navItems = [
   { name: 'Accueil', href: '/' },
@@ -28,6 +28,7 @@ const navItems = [
       { name: 'Devis & Commandes', href: '/devis', desc: 'Réponse rapide' },
     ],
   },
+  { name: 'Carrière', href: '/carriere' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -82,7 +83,7 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center" style={{ height: isScrolled ? '68px' : '80px', transition: 'height 0.3s' }}>
+          <div className="flex justify-between items-center" style={{ height: isScrolled ? '76px' : '90px', transition: 'height 0.3s' }}>
             {/* Logo */}
             <Link
               to="/"
@@ -92,7 +93,7 @@ export default function Header() {
               <img
                 src={logo}
                 alt="ABC Synthèse"
-                style={{ height: isScrolled ? '52px' : '62px', width: 'auto', transition: 'height 0.3s' }}
+                style={{ height: isScrolled ? '60px' : '72px', width: 'auto', transition: 'height 0.3s' }}
               />
             </Link>
 
