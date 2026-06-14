@@ -29,8 +29,8 @@ const values = [
     icon: Cpu,
     title: 'Innovation',
     description: 'Pionnier dans l\'introduction de la robotique chirurgicale Cuvis Joint et des technologies d\'IA au Maroc.',
-    color: 'bg-[#1a8a7a]/10',
-    iconColor: 'text-[#1a8a7a]',
+    color: 'bg-promamec-teal/10',
+    iconColor: 'text-promamec-teal',
   },
   {
     icon: Heart,
@@ -102,7 +102,7 @@ export default function About() {
   return (
     <div className="min-h-screen pt-32 pb-16">
       {/* ── PAGE HERO ── */}
-      <section className="relative py-20 bg-[#0d5c50] overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden">
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -112,7 +112,7 @@ export default function About() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="text-white">
-              <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
+              <span className="inline-block text-[#03b0a5] text-xs font-bold uppercase tracking-widest mb-4">
                 L'Entreprise
               </span>
               <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
@@ -153,13 +153,13 @@ export default function About() {
                   className="w-full h-auto"
                 />
               </div>
-              <div className="absolute -bottom-5 -right-5 bg-[#1a8a7a] text-white p-6 rounded-2xl shadow-xl">
+              <div className="absolute -bottom-5 -right-5 bg-[#00a49a] text-white p-6 rounded-lg shadow-xl">
                 <div className="text-xl font-bold">Dr. B. SABAI REGRAGUI</div>
                 <div className="text-xs text-white/80 uppercase tracking-widest">Président Fondateur</div>
               </div>
             </div>
             <div>
-              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-4">
+              <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-4">
                 Vision de la Direction
               </span>
               <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight italic">
@@ -185,22 +185,22 @@ export default function About() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-3">
               Nos Fondements
             </span>
             <h2 className="text-4xl font-extrabold text-gray-900">Mission & Vision</h2>
           </div>
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-[#1a8a7a]/10 rounded-2xl flex items-center justify-center mb-6">
-                <Target className="w-7 h-7 text-[#1a8a7a]" />
+              <div className="w-14 h-14 bg-[#00a49a]/10 rounded-2xl flex items-center justify-center mb-6">
+                <Target className="w-7 h-7 text-[#00a49a]" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Notre Mission</h3>
               <p className="text-gray-600 leading-relaxed">
                 Rendre accessible aux praticiens marocains les technologies médicales les plus innovantes (Robotique, Navigation) pour améliorer la précision chirurgicale et les résultats cliniques des patients.
               </p>
             </div>
-            <div className="bg-[#0d5c50] rounded-3xl p-10 shadow-sm text-white">
+            <div className="bg-[#003b37] rounded-3xl p-10 shadow-sm text-white">
               <div className="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center mb-6">
                 <Eye className="w-7 h-7 text-white" />
               </div>
@@ -218,7 +218,7 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-3">
               Portfolio
             </span>
             <h2 className="text-4xl font-extrabold text-gray-900">Nos Domaines d'Activité</h2>
@@ -227,10 +227,10 @@ export default function About() {
             {domaines.map((d, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-4 p-6 rounded-2xl border border-gray-100 hover:border-[#1a8a7a]/30 hover:bg-[#f0faf8] transition-all hover:shadow-md group"
+                className="flex items-start gap-4 p-6 rounded-2xl border border-gray-100 hover:border-[#00a49a]/30 hover:bg-[#00a49a]/5 transition-all hover:shadow-md group"
               >
-                <div className="w-12 h-12 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#1a8a7a] transition-colors">
-                  <d.icon className="w-6 h-6 text-[#1a8a7a] group-hover:text-white transition-colors" />
+                <div className="w-12 h-12 bg-[#00a49a]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#00a49a] transition-colors">
+                  <d.icon className="w-6 h-6 text-[#00a49a] group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-1">{d.name}</h4>
@@ -269,7 +269,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-3">
                 Qualité & Compliance
               </span>
               <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
@@ -282,17 +282,17 @@ export default function About() {
               <ul className="space-y-4">
                 {certifications.map((cert, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-[#1a8a7a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#1a8a7a]" />
+                    <div className="w-6 h-6 bg-[#00a49a]/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#00a49a]" />
                     </div>
                     <span className="text-gray-700">{cert}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5] rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#004c47] via-[#00a49a] to-[#03b0a5] rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-              <Award className="w-16 h-16 mb-6 text-[#5dddc7]" />
+              <Award className="w-16 h-16 mb-6 text-[#03b0a5]" />
               <h3 className="text-2xl font-bold mb-4">Excellence certifiée</h3>
               <p className="text-white/85 mb-8 leading-relaxed">
                 Notre système de management est audité selon les standards internationaux, 
@@ -326,7 +326,7 @@ export default function About() {
           />
           <div className="relative mt-12">
             {/* Central line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#1a8a7a]/15 hidden lg:block" />
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#00a49a]/15 hidden lg:block" />
             <div className="space-y-10">
               {timeline.map((item, idx) => (
                 <div
@@ -334,10 +334,10 @@ export default function About() {
                   className={`relative flex items-center gap-8 ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
                 >
                   <div className="flex-1 hidden lg:block" />
-                  <div className="w-5 h-5 bg-[#1a8a7a] rounded-full border-4 border-white shadow-lg z-10 hidden lg:flex items-center justify-center shrink-0" />
+                  <div className="w-5 h-5 bg-[#00a49a] rounded-full border-4 border-white shadow-lg z-10 hidden lg:flex items-center justify-center shrink-0" />
                   <div className="flex-1">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                      <span className="inline-block bg-[#1a8a7a]/10 text-[#1a8a7a] text-sm font-bold px-4 py-1 rounded-full mb-3">
+                      <span className="inline-block bg-[#00a49a]/10 text-[#00a49a] text-sm font-bold px-4 py-1 rounded-full mb-3">
                         {item.year}
                       </span>
                       <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -356,14 +356,14 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-3">
                 Réseau National
               </span>
               <h2 className="text-4xl font-extrabold text-gray-900 mb-8">Maillage Territorial</h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center shrink-0">
-                    <Building2 className="w-6 h-6 text-[#1a8a7a]" />
+                  <div className="w-12 h-12 bg-[#00a49a]/10 rounded-xl flex items-center justify-center shrink-0">
+                    <Building2 className="w-6 h-6 text-[#00a49a]" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900 mb-1">Siège Social Stratégique</div>
@@ -371,8 +371,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-[#1a8a7a]" />
+                  <div className="w-12 h-12 bg-[#00a49a]/10 rounded-xl flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6 text-[#00a49a]" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900 mb-1">12 Antennes de Proximité</div>

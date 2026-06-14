@@ -104,18 +104,18 @@ export default function Products() {
   return (
     <div className="min-h-screen pt-36 pb-16">
       {/* ── PAGE HERO ── */}
-      <section className="relative py-20 bg-[#0d5c50] overflow-hidden mt-8">
+      <section className="relative py-20 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden mt-8">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000"
             alt="ABC Synthèse – Produits"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a2e2a]/90 to-[#0d5c50]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
+            <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-4">
               Catalogue Officiel 2026
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -185,7 +185,7 @@ export default function Products() {
                   <button
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded-md transition-colors ${
-                      viewMode === 'grid' ? 'bg-white shadow-sm text-[#1a8a7a]' : 'text-gray-500'
+                      viewMode === 'grid' ? 'bg-white shadow-sm text-[#00a49a]' : 'text-gray-500'
                     }`}
                   >
                     <Grid3X3 className="w-5 h-5" />
@@ -193,7 +193,7 @@ export default function Products() {
                   <button
                     onClick={() => setViewMode('list')}
                     className={`p-2 rounded-md transition-colors ${
-                      viewMode === 'list' ? 'bg-white shadow-sm text-[#1a8a7a]' : 'text-gray-500'
+                      viewMode === 'list' ? 'bg-white shadow-sm text-[#00a49a]' : 'text-gray-500'
                     }`}
                   >
                     <List className="w-5 h-5" />
@@ -217,7 +217,7 @@ export default function Products() {
               <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t">
                 <span className="text-sm text-gray-500">Filtres actifs :</span>
                 {selectedCategory !== 'all' && (
-                  <Badge variant="secondary" className="gap-1 bg-[#1a8a7a]/10 text-[#1a8a7a] border-0">
+                  <Badge variant="secondary" className="gap-1 bg-[#00a49a]/10 text-[#00a49a] border-0">
                     {getCategoryName(selectedCategory)}
                     <X className="w-3 h-3 cursor-pointer" onClick={() => handleCategoryChange('all')} />
                   </Badge>

@@ -237,8 +237,8 @@ export default function AdminQuotes() {
               {/* Contact Info */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#1a8a7a]/10 rounded-lg flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-[#1a8a7a]" />
+                  <div className="w-10 h-10 bg-[#00a49a]/10 rounded-lg flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-[#00a49a]" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Email</p>
@@ -246,8 +246,8 @@ export default function AdminQuotes() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#1a8a7a]/10 rounded-lg flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-[#1a8a7a]" />
+                  <div className="w-10 h-10 bg-[#00a49a]/10 rounded-lg flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-[#00a49a]" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Téléphone</p>
@@ -256,8 +256,8 @@ export default function AdminQuotes() {
                 </div>
                 {selectedQuote.company && (
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#1a8a7a]/10 rounded-lg flex items-center justify-center">
-                      <Building2 className="w-5 h-5 text-[#1a8a7a]" />
+                    <div className="w-10 h-10 bg-[#00a49a]/10 rounded-lg flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-[#00a49a]" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Société</p>
@@ -266,8 +266,8 @@ export default function AdminQuotes() {
                   </div>
                 )}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#1a8a7a]/10 rounded-lg flex items-center justify-center">
-                    <Calendar className="w-5 h-5 text-[#1a8a7a]" />
+                  <div className="w-10 h-10 bg-[#00a49a]/10 rounded-lg flex items-center justify-center">
+                    <Calendar className="w-5 h-5 text-[#00a49a]" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Date</p>
@@ -282,7 +282,7 @@ export default function AdminQuotes() {
               {selectedQuote.productName && (
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center gap-3 mb-2">
-                    <Package className="w-5 h-5 text-[#1a8a7a]" />
+                    <Package className="w-5 h-5 text-[#00a49a]" />
                     <span className="font-medium">Produit concerné</span>
                   </div>
                   <p className="text-gray-700">{selectedQuote.productName}</p>

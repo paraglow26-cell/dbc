@@ -17,7 +17,7 @@ export default function SectionHeader({
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
       {subtitle && (
         <span className={`inline-block text-sm font-semibold uppercase tracking-wider mb-3 ${
-          light ? 'text-[#1a8a7a]' : 'text-[#1a8a7a]'
+          light ? 'text-[#00a49a]' : 'text-[#00a49a]'
         }`}>
           {subtitle}
         </span>
@@ -35,9 +35,9 @@ export default function SectionHeader({
         </p>
       )}
       <div className={`flex items-center gap-2 mt-6 ${centered ? 'justify-center' : ''}`}>
-        <div className="w-12 h-1 bg-[#1a8a7a] rounded-full"></div>
-        <div className="w-3 h-1 bg-[#1a8a7a]/50 rounded-full"></div>
-        <div className="w-3 h-1 bg-[#1a8a7a]/30 rounded-full"></div>
+        <div className="w-12 h-1 bg-[#00a49a] rounded-full"></div>
+        <div className="w-3 h-1 bg-[#00a49a]/50 rounded-full"></div>
+        <div className="w-3 h-1 bg-[#00a49a]/30 rounded-full"></div>
       </div>
     </div>
   );

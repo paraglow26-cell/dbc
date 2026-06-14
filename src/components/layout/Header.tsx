@@ -73,26 +73,7 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
-      {/* Top Bar */}
-      <div className="bg-[#0d5c50] text-white py-2 hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs">
-          <div className="flex items-center gap-6">
-            <a href="tel:+212522202020" className="flex items-center gap-1.5 hover:text-[#5dddc7] transition-colors">
-              <Phone className="w-3.5 h-3.5" />
-              +212 5 22 20 20 20
-            </a>
-            <a href="mailto:contact@abcsynthese.ma" className="flex items-center gap-1.5 hover:text-[#5dddc7] transition-colors">
-              <Mail className="w-3.5 h-3.5" />
-              contact@abcsynthese.ma
-            </a>
-          </div>
-          <div className="flex items-center gap-4 text-white/70">
-            <span>Lun–Ven : 09h00 – 18h00</span>
-            <span className="w-px h-4 bg-white/20" />
-            <span>Casablanca, Maroc</span>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Navbar */}
       <div
@@ -129,8 +110,8 @@ export default function Header() {
                       <button
                         className={`flex items-center gap-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
                           isActive(item.href)
-                            ? 'text-[#1a8a7a] bg-[#1a8a7a]/8'
-                            : 'text-gray-700 hover:text-[#1a8a7a] hover:bg-gray-50'
+                            ? 'text-[#00a49a] bg-[#00a49a]/8'
+                            : 'text-gray-700 hover:text-[#00a49a] hover:bg-gray-50'
                         }`}
                       >
                         {item.name}
@@ -147,11 +128,11 @@ export default function Header() {
                             <Link
                               key={child.name}
                               to={child.href}
-                              className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-[#f0faf8] group transition-colors"
+                              className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-promamec-teal/5 group transition-colors"
                             >
-                              <ChevronRight className="w-4 h-4 text-[#1a8a7a] mt-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <ChevronRight className="w-4 h-4 text-promamec-teal mt-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                               <div>
-                                <div className="text-sm font-semibold text-gray-800 group-hover:text-[#1a8a7a] transition-colors">
+                                <div className="text-sm font-semibold text-gray-800 group-hover:text-promamec-teal transition-colors">
                                   {child.name}
                                 </div>
                                 {'desc' in child && (
@@ -169,8 +150,8 @@ export default function Header() {
                       to={item.href}
                       className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
                         isActive(item.href)
-                          ? 'text-[#1a8a7a] bg-[#1a8a7a]/8'
-                          : 'text-gray-700 hover:text-[#1a8a7a] hover:bg-gray-50'
+                          ? 'text-[#00a49a] bg-[#00a49a]/8'
+                          : 'text-gray-700 hover:text-[#00a49a] hover:bg-gray-50'
                       }`}
                     >
                       {item.name}
@@ -184,7 +165,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <Button
                 onClick={() => navigate('/devis')}
-                className="bg-[#1a8a7a] hover:bg-[#147a6a] text-white font-semibold px-6 h-10 rounded-xl shadow-sm hover:shadow-md transition-all"
+                className="bg-[#00a49a] hover:bg-[#03b0a5] text-white font-semibold px-6 h-10 rounded-lg shadow-sm hover:shadow-md transition-all"
               >
                 Demander un devis
               </Button>
@@ -222,10 +203,10 @@ export default function Header() {
                             <Link
                               key={child.name}
                               to={child.href}
-                              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-gray-600 hover:text-[#1a8a7a] hover:bg-[#f0faf8] transition-colors"
+                              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-gray-600 hover:text-[#00a49a] hover:bg-promamec-teal/5 transition-colors"
                               onClick={() => setMobileMenuOpen(false)}
                             >
-                              <ChevronRight className="w-4 h-4 text-[#1a8a7a]" />
+                              <ChevronRight className="w-4 h-4 text-[#00a49a]" />
                               {child.name}
                             </Link>
                           ))}
@@ -237,7 +218,7 @@ export default function Header() {
                       to={item.href}
                       className={`block px-4 py-3 rounded-xl font-medium transition-colors ${
                         isActive(item.href)
-                          ? 'text-[#1a8a7a] bg-[#1a8a7a]/8'
+                          ? 'text-[#00a49a] bg-[#00a49a]/8'
                           : 'text-gray-800 hover:bg-gray-50'
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
@@ -249,7 +230,7 @@ export default function Header() {
               ))}
               <Button
                 onClick={() => { navigate('/devis'); setMobileMenuOpen(false); }}
-                className="w-full bg-[#1a8a7a] hover:bg-[#147a6a] text-white font-semibold mt-3 rounded-xl"
+                className="w-full bg-[#00a49a] hover:bg-[#03b0a5] text-white font-semibold mt-3 rounded-lg"
               >
                 Demander un devis
               </Button>

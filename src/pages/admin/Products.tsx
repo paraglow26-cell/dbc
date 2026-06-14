@@ -200,7 +200,7 @@ export default function AdminProducts() {
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={handleAddNew} className="bg-[#1a8a7a] hover:bg-[#147a6a] transition-all">
+            <Button onClick={handleAddNew} className="bg-[#00a49a] hover:bg-[#03b0a5] transition-all">
               <Plus className="w-4 h-4 mr-2" />
               Nouveau Produit
             </Button>
@@ -278,20 +278,20 @@ export default function AdminProducts() {
                 <textarea
                   value={formData.fullDescription || ''}
                   onChange={(e) => setFormData({ ...formData, fullDescription: e.target.value })}
-                  className="w-full min-h-[100px] p-3 border rounded-md focus:ring-2 focus:ring-[#1a8a7a] transition-all text-sm mb-4"
+                  className="w-full min-h-[100px] p-3 border rounded-md focus:ring-2 focus:ring-[#00a49a] transition-all text-sm mb-4"
                   placeholder="Détails techniques, matériaux, indications..."
                 />
               </div>
 
-              <div className="flex items-center gap-2 p-4 bg-[#1a8a7a]/5 rounded-xl border border-[#1a8a7a]/10">
+              <div className="flex items-center gap-2 p-4 bg-[#00a49a]/5 rounded-xl border border-[#00a49a]/10">
                 <input
                   type="checkbox"
                   id="featured"
                   checked={formData.featured || false}
                   onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                  className="w-4 h-4 rounded border-gray-300 text-[#1a8a7a] focus:ring-[#1a8a7a]"
+                  className="w-4 h-4 rounded border-gray-300 text-[#00a49a] focus:ring-[#00a49a]"
                 />
-                <Label htmlFor="featured" className="cursor-pointer font-bold text-[#0d5c50]">
+                <Label htmlFor="featured" className="cursor-pointer font-bold text-[#004c47]">
                   Mettre en vedette sur l'accueil
                 </Label>
               </div>
@@ -299,7 +299,7 @@ export default function AdminProducts() {
               {/* Spécifications */}
               <div className="space-y-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
                 <Label className="text-base font-bold flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-[#1a8a7a]" />
+                  <Activity className="w-4 h-4 text-[#00a49a]" />
                   Spécifications Techniques
                 </Label>
                 <div className="flex gap-2">
@@ -322,7 +322,7 @@ export default function AdminProducts() {
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(formData.specifications || {}).map(([key, value]) => (
                     <div key={key} className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border shadow-sm text-sm">
-                      <span className="font-bold text-[#1a8a7a]">{key}:</span>
+                      <span className="font-bold text-[#00a49a]">{key}:</span>
                       <span>{value}</span>
                       <button type="button" onClick={() => removeSpec(key)} className="text-gray-400 hover:text-red-500 ml-1">
                         <X className="w-3 h-3" />
@@ -335,7 +335,7 @@ export default function AdminProducts() {
               {/* Caractéristiques (Features) */}
               <div className="space-y-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
                 <Label className="text-base font-bold flex items-center gap-2">
-                  <ListPlus className="w-4 h-4 text-[#1a8a7a]" />
+                  <ListPlus className="w-4 h-4 text-[#00a49a]" />
                   Avantages Cliniques
                 </Label>
                 <div className="flex gap-2">
@@ -405,7 +405,7 @@ export default function AdminProducts() {
                 <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)} className="rounded-xl px-10">
                   Annuler
                 </Button>
-                <Button type="submit" className="bg-[#1a8a7a] hover:bg-[#147a6a] px-12 rounded-xl font-bold">
+                <Button type="submit" className="bg-[#00a49a] hover:bg-[#03b0a5] px-12 rounded-xl font-bold">
                   {editingProduct ? 'Enregistrer les modifications' : 'Créer le Produit'}
                 </Button>
               </div>
@@ -444,7 +444,7 @@ export default function AdminProducts() {
                     <TableCell>
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border shrink-0">
-                          <Icon className="w-5 h-5 text-[#1a8a7a]" />
+                          <Icon className="w-5 h-5 text-[#00a49a]" />
                         </div>
                         <div>
                           <p className="font-bold text-gray-900">{product.name}</p>
@@ -453,7 +453,7 @@ export default function AdminProducts() {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className="bg-white font-medium text-[#1a8a7a] border-[#1a8a7a]/20">
+                      <Badge variant="outline" className="bg-white font-medium text-[#00a49a] border-[#00a49a]/20">
                         {getCategoryName(product.category)}
                       </Badge>
                     </TableCell>
@@ -467,7 +467,7 @@ export default function AdminProducts() {
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex items-center justify-end gap-2">
-                        <Button variant="ghost" size="icon" onClick={() => handleEdit(product)} className="h-9 w-9 hover:bg-[#1a8a7a]/10 hover:text-[#1a8a7a]">
+                        <Button variant="ghost" size="icon" onClick={() => handleEdit(product)} className="h-9 w-9 hover:bg-[#00a49a]/10 hover:text-[#00a49a]">
                           <Edit2 className="w-4 h-4" />
                         </Button>
                         <Button variant="ghost" size="icon" onClick={() => handleDelete(product.id)} className="h-9 w-9 text-red-400 hover:bg-red-50 hover:text-red-600">

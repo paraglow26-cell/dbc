@@ -44,7 +44,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5] p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#004c47] via-[#00a49a] to-[#046fcc] p-4">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
       
       <Card className="w-full max-w-md relative z-10">
@@ -96,7 +96,7 @@ export default function AdminLogin() {
             
             <Button
               type="submit"
-              className="w-full bg-[#1a8a7a] hover:bg-[#147a6a]"
+              className="w-full bg-[#00a49a] hover:bg-[#03b0a5] rounded-lg"
               disabled={isLoading}
             >
               {isLoading ? 'Connexion...' : 'Se connecter'}

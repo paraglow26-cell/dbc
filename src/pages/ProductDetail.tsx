@@ -56,13 +56,13 @@ export default function ProductDetail() {
       <div className="bg-gray-50 border-b overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link to="/" className="hover:text-[#1a8a7a]">Accueil</Link>
+            <Link to="/" className="hover:text-[#00a49a]">Accueil</Link>
             <span>/</span>
-            <Link to="/produits" className="hover:text-[#1a8a7a]">Produits</Link>
+            <Link to="/produits" className="hover:text-[#00a49a]">Produits</Link>
             <span>/</span>
             <Link 
               to={`/produits?category=${product.category}`} 
-              className="hover:text-[#1a8a7a]"
+              className="hover:text-[#00a49a]"
             >
               {product.category === 'orthopedie' ? 'Orthopédie' : 'Traumatologie'}
             </Link>
@@ -87,11 +87,11 @@ export default function ProductDetail() {
                       className="w-full h-full object-cover transition-all duration-300"
                     />
                   ) : (
-                    <div className="w-40 h-40 rounded-full bg-[#1a8a7a]/10 flex items-center justify-center">
+                    <div className="w-40 h-40 rounded-full bg-[#00a49a]/10 flex items-center justify-center">
                       {product.category === 'orthopedie' ? (
-                        <Bone className="w-20 h-20 text-[#1a8a7a]" />
+                        <Bone className="w-20 h-20 text-[#00a49a]" />
                       ) : (
-                        <Activity className="w-20 h-20 text-[#1a8a7a]" />
+                        <Activity className="w-20 h-20 text-[#00a49a]" />
                       )}
                     </div>
                   )}
@@ -124,7 +124,7 @@ export default function ProductDetail() {
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
                       className={`w-3 h-3 rounded-full transition-colors ${
-                        idx === currentImageIndex ? 'bg-[#1a8a7a]' : 'bg-gray-300'
+                        idx === currentImageIndex ? 'bg-[#00a49a]' : 'bg-gray-300'
                       }`}
                     />
                   ))}
@@ -135,7 +135,7 @@ export default function ProductDetail() {
             {/* Product Info */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <Badge className="bg-[#1a8a7a]">
+                <Badge className="bg-[#00a49a]">
                   {product.category === 'orthopedie' ? 'Orthopédie' : 'Traumatologie'}
                 </Badge>
                 <span className="text-sm text-gray-500">{product.subcategory}</span>
@@ -157,7 +157,7 @@ export default function ProductDetail() {
                 <ul className="space-y-2">
                   {product.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2 text-gray-600">
-                      <CheckCircle2 className="w-5 h-5 text-[#1a8a7a] flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#00a49a] flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -170,7 +170,7 @@ export default function ProductDetail() {
                   productId={product.id}
                   productName={product.name}
                   size="lg"
-                  className="bg-[#1a8a7a] hover:bg-[#147a6a]"
+                  className="bg-[#00a49a] hover:bg-[#03b0a5] rounded-lg text-white"
                 />
                 {product.technicalSheet && (
                   <Button variant="outline" size="lg" className="gap-2">

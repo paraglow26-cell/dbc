@@ -42,7 +42,7 @@ function DashboardHome() {
       title: 'Demandes de devis', 
       value: quoteRequests.length, 
       icon: FileText, 
-      color: 'bg-[#1a8a7a]',
+      color: 'bg-[#00a49a]',
       trend: `${quoteRequests.filter(r => r.status === 'pending').length} en attente`
     },
     { 
@@ -75,7 +75,7 @@ function DashboardHome() {
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{stat.title}</p>
                   <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-xs text-[#1a8a7a] mt-1">{stat.trend}</p>
+                  <p className="text-xs text-[#00a49a] mt-1">{stat.trend}</p>
                 </div>
                 <div className={`w-12 h-12 ${stat.color} rounded-xl flex items-center justify-center`}>
                   <stat.icon className="w-6 h-6 text-white" />
@@ -92,7 +92,7 @@ function DashboardHome() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-lg">Dernières demandes de devis</CardTitle>
-            <Link to="/admin/quotes" className="text-sm text-[#1a8a7a] hover:underline">
+            <Link to="/admin/quotes" className="text-sm text-[#00a49a] hover:underline">
               Voir tout
             </Link>
           </CardHeader>
@@ -124,7 +124,7 @@ function DashboardHome() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-lg">Derniers messages</CardTitle>
-            <Link to="/admin/messages" className="text-sm text-[#1a8a7a] hover:underline">
+            <Link to="/admin/messages" className="text-sm text-[#00a49a] hover:underline">
               Voir tout
             </Link>
           </CardHeader>
@@ -185,7 +185,7 @@ export default function AdminDashboard() {
             <Link
               key={item.name}
               to={item.href}
-              className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-[#1a8a7a]/10 hover:text-[#1a8a7a] transition-colors mb-1"
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-[#00a49a]/10 hover:text-[#00a49a] transition-colors mb-1"
             >
               <item.icon className="w-5 h-5 flex-shrink-0" />
               {isSidebarOpen && <span className="text-sm font-medium">{item.name}</span>}
@@ -208,7 +208,7 @@ export default function AdminDashboard() {
         <header className="bg-white shadow-sm px-8 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold text-gray-900">Tableau de bord</h1>
           <div className="flex items-center gap-4">
-            <Link to="/" className="text-sm text-[#1a8a7a] hover:underline">
+            <Link to="/" className="text-sm text-[#00a49a] hover:underline">
               Voir le site
             </Link>
           </div>

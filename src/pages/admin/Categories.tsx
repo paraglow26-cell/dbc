@@ -109,7 +109,7 @@ export default function AdminCategories() {
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={handleAddNew} className="bg-[#1a8a7a]">
+            <Button onClick={handleAddNew} className="bg-[#00a49a]">
               <Plus className="w-4 h-4 mr-2" />
               Nouveau Pôle
             </Button>
@@ -161,7 +161,7 @@ export default function AdminCategories() {
                 <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
                   Annuler
                 </Button>
-                <Button type="submit" className="bg-[#1a8a7a]">
+                <Button type="submit" className="bg-[#00a49a]">
                   {editingCategory ? 'Sauvegarder' : 'Créer'}
                 </Button>
               </div>
@@ -189,8 +189,8 @@ export default function AdminCategories() {
                   <TableRow key={category.id}>
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-[#1a8a7a]/5 rounded-lg flex items-center justify-center border border-[#1a8a7a]/10">
-                          <Icon className="w-5 h-5 text-[#1a8a7a]" />
+                        <div className="w-10 h-10 bg-[#00a49a]/5 rounded-lg flex items-center justify-center border border-[#00a49a]/10">
+                          <Icon className="w-5 h-5 text-[#00a49a]" />
                         </div>
                         <span className="font-bold text-gray-900">{category.name}</span>
                       </div>

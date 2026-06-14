@@ -15,17 +15,17 @@ export default function Maintenance() {
   return (
     <div className="min-h-screen pt-36 pb-16">
       {/* ── HERO ── */}
-      <section className="relative py-24 bg-[#0d5c50] overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000"
             alt="SAV & Expertise Terrain ABC Synthèse"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a2e2a]/90 to-[#0d5c50]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-          <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
+          <span className="inline-block text-white/80 text-xs font-bold uppercase tracking-widest mb-4">
             Engagement & Réactivité
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
@@ -53,8 +53,8 @@ export default function Maintenance() {
               
               <div className="space-y-10">
                 <div className="flex gap-6">
-                  <div className="w-14 h-14 bg-[#1a8a7a]/10 rounded-2xl flex items-center justify-center shrink-0">
-                    <Users className="w-7 h-7 text-[#1a8a7a]" />
+                  <div className="w-14 h-14 bg-promamec-teal/10 rounded-2xl flex items-center justify-center shrink-0">
+                    <Users className="w-7 h-7 text-promamec-teal" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Instrumentistes Spécialisés</h3>
@@ -66,8 +66,8 @@ export default function Maintenance() {
                 </div>
 
                 <div className="flex gap-6">
-                  <div className="w-14 h-14 bg-[#1a8a7a]/10 rounded-2xl flex items-center justify-center shrink-0">
-                    <Truck className="w-7 h-7 text-[#1a8a7a]" />
+                  <div className="w-14 h-14 bg-promamec-teal/10 rounded-2xl flex items-center justify-center shrink-0">
+                    <Truck className="w-7 h-7 text-promamec-teal" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Logistique d'Urgence</h3>
@@ -79,8 +79,8 @@ export default function Maintenance() {
                 </div>
 
                 <div className="flex gap-6">
-                  <div className="w-14 h-14 bg-[#1a8a7a]/10 rounded-2xl flex items-center justify-center shrink-0">
-                    <Stethoscope className="w-7 h-7 text-[#1a8a7a]" />
+                  <div className="w-14 h-14 bg-promamec-teal/10 rounded-2xl flex items-center justify-center shrink-0">
+                    <Stethoscope className="w-7 h-7 text-promamec-teal" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Suivi Post-Opératoire</h3>
@@ -103,7 +103,7 @@ export default function Maintenance() {
                 </p>
                 <div className="space-y-4">
                   <div className="bg-white p-6 rounded-2xl border border-gray-100 flex items-center gap-4">
-                    <div className="w-12 h-12 bg-[#1a8a7a] rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-promamec-teal rounded-xl flex items-center justify-center">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -112,8 +112,8 @@ export default function Maintenance() {
                     </div>
                   </div>
                   <div className="bg-white p-6 rounded-2xl border border-gray-100 flex items-center gap-4">
-                    <div className="w-12 h-12 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-[#1a8a7a]" />
+                    <div className="w-12 h-12 bg-promamec-teal/10 rounded-xl flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-promamec-teal" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">Délai d'intervention</p>
@@ -123,7 +123,7 @@ export default function Maintenance() {
                 </div>
                 <Button 
                   onClick={() => navigate('/contact')} 
-                  className="w-full mt-8 bg-[#1a8a7a] hover:bg-[#147a6a] h-14 rounded-2xl font-bold text-lg"
+                  className="w-full mt-8 bg-promamec-teal hover:bg-[#03b0a5] h-14 rounded-lg font-bold text-lg"
                 >
                   Planifier une intervention
                 </Button>
@@ -136,7 +136,7 @@ export default function Maintenance() {
       {/* ── QUALITÉ ── */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ShieldCheck className="w-16 h-16 text-[#1a8a7a] mx-auto mb-6" />
+          <ShieldCheck className="w-16 h-16 text-promamec-teal mx-auto mb-6" />
           <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Conformité au Standard ISO</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Notre démarche SAV est intégrée dans notre système de management de la qualité, 

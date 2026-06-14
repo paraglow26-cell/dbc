@@ -5,6 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        promamec: {
+          teal: '#00a49a',
+          'teal-light': '#03b0a5',
+          blue: '#046fcc',
+          gray: '#f6f6f6',
+          dark: '#111111',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

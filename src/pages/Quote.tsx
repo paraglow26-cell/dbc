@@ -93,7 +93,7 @@ export default function Quote() {
                 pour étudier votre demande.
               </p>
               <div className="flex flex-col gap-3">
-                <Button onClick={() => navigate('/produits')} className="bg-[#1a8a7a]">
+                <Button onClick={() => navigate('/produits')} className="bg-[#00a49a] hover:bg-[#03b0a5] rounded-lg">
                   Continuer mes recherches
                 </Button>
                 <Button variant="ghost" onClick={() => navigate('/')}>
@@ -110,24 +110,24 @@ export default function Quote() {
   return (
     <div className="min-h-screen pt-36 pb-16">
       {/* ── PAGE HERO ── */}
-      <section className="relative py-16 bg-[#0d5c50] overflow-hidden mt-8">
+      <section className="relative py-16 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden mt-8">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000"
             alt="ABC Synthèse – Devis"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a2e2a]/90 to-[#0d5c50]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-[#5dddc7] hover:text-white mb-6 transition-colors mx-auto"
+            className="flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors mx-auto"
           >
             <ArrowLeft className="w-5 h-5" />
             Retour
           </button>
-          <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
+          <span className="inline-block text-white/80 text-xs font-bold uppercase tracking-widest mb-4">
             Service Commercial
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -269,7 +269,7 @@ export default function Quote() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-[#1a8a7a] hover:bg-[#147a6a]"
+                  className="w-full bg-[#00a49a] hover:bg-[#03b0a5] rounded-lg"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

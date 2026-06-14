@@ -80,20 +80,20 @@ export default function Contact() {
   return (
     <div className="min-h-screen pt-36 pb-16">
       {/* ── PAGE HERO ── */}
-      <section className="relative py-20 bg-[#0d5c50] overflow-hidden mt-8">
+      <section className="relative py-20 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden mt-8">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000"
             alt="ABC Synthèse – Contact"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a2e2a]/90 to-[#0d5c50]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-[#5dddc7]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[#5dddc7]/20">
-            <Stethoscope className="w-8 h-8 text-[#5dddc7]" />
+          <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20">
+            <Stethoscope className="w-8 h-8 text-white/90" />
           </div>
-          <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-4">
+          <span className="inline-block text-white/80 text-xs font-bold uppercase tracking-widest mb-4">
             Assistance & Support
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -112,8 +112,8 @@ export default function Contact() {
             {contactInfo.map((info, idx) => (
               <Card key={idx} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-14 h-14 bg-[#1a8a7a]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <info.icon className="w-7 h-7 text-[#1a8a7a]" />
+                  <div className="w-14 h-14 bg-[#00a49a]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <info.icon className="w-7 h-7 text-[#00a49a]" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">{info.title}</h3>
                   <p className="text-gray-600 text-sm whitespace-pre-line">{info.content}</p>
@@ -205,7 +205,7 @@ export default function Contact() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-[#1a8a7a] hover:bg-[#147a6a]"
+                    className="w-full bg-[#00a49a] hover:bg-[#03b0a5] rounded-lg"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (

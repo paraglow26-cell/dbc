@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="group overflow-hidden border border-gray-200 hover:border-[#1a8a7a]/30 hover:shadow-xl hover:shadow-[#1a8a7a]/5 transition-all duration-300">
+    <Card className="group overflow-hidden border border-gray-200 hover:border-[#00a49a]/30 hover:shadow-xl hover:shadow-[#00a49a]/5 transition-all duration-300">
       {/* Image */}
       <Link to={`/produits/${product.id}`} className="block">
         <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
@@ -24,21 +24,21 @@ export default function ProductCard({ product }: ProductCardProps) {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
             ) : (
-              <div className="w-24 h-24 rounded-full bg-[#1a8a7a]/10 flex items-center justify-center">
-                <span className="text-3xl font-bold text-[#1a8a7a]">
+              <div className="w-24 h-24 rounded-full bg-[#00a49a]/10 flex items-center justify-center">
+                <span className="text-3xl font-bold text-[#00a49a]">
                   {product.name.charAt(0)}
                 </span>
               </div>
             )}
           </div>
           <Badge 
-            className="absolute top-4 left-4 bg-[#1a8a7a] hover:bg-[#1a8a7a]"
+            className="absolute top-4 left-4 bg-[#00a49a] hover:bg-[#00a49a]"
           >
             {product.category === 'orthopedie' ? 'Orthopédie' : 'Traumatologie'}
           </Badge>
           
           {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-[#1a8a7a]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+          <div className="absolute inset-0 bg-[#00a49a]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
               <Button variant="secondary" size="sm" className="gap-2 pointer-events-none">
                 <Eye className="w-4 h-4" />
                 Voir détails
@@ -49,11 +49,11 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* Content */}
       <CardContent className="p-6">
-        <div className="text-xs text-[#1a8a7a] font-medium mb-2 uppercase tracking-wide">
+        <div className="text-xs text-[#00a49a] font-medium mb-2 uppercase tracking-wide">
           {product.subcategory}
         </div>
         <Link to={`/produits/${product.id}`}>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#1a8a7a] transition-colors">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#00a49a] transition-colors">
             {product.name}
           </h3>
         </Link>
@@ -84,7 +84,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <QuoteButton
           productId={product.id}
           productName={product.name}
-          className="flex-1 bg-[#1a8a7a] hover:bg-[#147a6a]"
+          className="flex-1 bg-[#00a49a] hover:bg-[#03b0a5] rounded-lg"
         />
         {product.technicalSheet && (
           <Button variant="outline" size="icon" className="flex-shrink-0">

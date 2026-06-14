@@ -66,7 +66,7 @@ export default function Traumatologie() {
   return (
     <div className="min-h-screen pt-28 pb-16">
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-[#0d5c50] via-[#1a8a7a] to-[#2db5a5]">
+      <section className="relative py-20 bg-gradient-to-br from-[#004c47] via-[#00a49a] to-[#03b0a5]">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/80 mb-4">
@@ -83,7 +83,7 @@ export default function Traumatologie() {
           <div className="flex flex-wrap gap-4">
             <Button
               onClick={() => navigate('/produits?category=traumatologie')}
-              className="bg-white text-[#1a8a7a] hover:bg-white/90"
+              className="bg-white text-[#00a49a] hover:bg-white/90 rounded-lg"
             >
               Voir les produits
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -108,8 +108,8 @@ export default function Traumatologie() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, idx) => (
               <div key={idx} className="text-center">
-                <div className="w-16 h-16 bg-[#1a8a7a]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="w-8 h-8 text-[#1a8a7a]" />
+                <div className="w-16 h-16 bg-[#00a49a]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <feature.icon className="w-8 h-8 text-[#00a49a]" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
@@ -137,7 +137,7 @@ export default function Traumatologie() {
                   {type.products.map((product, pidx) => (
                     <span 
                       key={pidx}
-                      className="text-xs bg-[#1a8a7a]/10 text-[#1a8a7a] px-3 py-1 rounded-full font-medium"
+                      className="text-xs bg-[#00a49a]/10 text-[#00a49a] px-3 py-1 rounded-full font-medium"
                     >
                       {product}
                     </span>
@@ -169,7 +169,7 @@ export default function Traumatologie() {
               onClick={() => navigate('/produits?category=traumatologie')}
               variant="outline"
               size="lg"
-              className="border-[#1a8a7a] text-[#1a8a7a] hover:bg-[#1a8a7a] hover:text-white"
+              className="border-[#00a49a] text-[#00a49a] hover:bg-[#00a49a] hover:text-white rounded-lg"
             >
               Voir tous les produits traumatologie
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -179,7 +179,7 @@ export default function Traumatologie() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1a8a7a]">
+      <section className="py-20 bg-[#00a49a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Besoin d'informations techniques ?
@@ -191,13 +191,13 @@ export default function Traumatologie() {
           <div className="flex flex-wrap justify-center gap-4">
             <QuoteButton
               size="lg"
-              className="bg-white text-[#1a8a7a] hover:bg-white/90"
+              className="bg-white text-[#00a49a] hover:bg-white/90 rounded-lg"
             />
             <Button
               onClick={() => navigate('/contact')}
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white/10 bg-transparent"
+              className="border-white text-white hover:bg-white/10 bg-transparent rounded-lg"
             >
               Nous contacter
             </Button>

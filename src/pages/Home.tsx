@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -106,119 +107,143 @@ export default function Home() {
   const { products } = useApp();
   const featuredProducts = products.filter((p) => p.featured);
 
+  const heroImages = [
+    "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=85&w=2400",
+    "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=85&w=2400",
+    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=85&w=2400"
+  ];
+
+  const [currentImageIdx, setCurrentImageIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIdx((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center pt-40 pb-16 overflow-hidden">
+      <section className="relative pt-32 pb-48 overflow-hidden bg-slate-900">
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=85&w=2400"
-            alt="ABC Synthèse – SUPPORTING BONES"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0" style={{background: 'linear-gradient(to right, rgba(10,46,42,0.97) 0%, rgba(13,92,80,0.88) 45%, rgba(13,92,80,0.35) 65%, rgba(0,0,0,0.05) 100%)'}} />
+          {heroImages.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt="ABC Synthèse – SUPPORTING BONES"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ${
+                idx === currentImageIdx ? 'opacity-40' : 'opacity-0'
+              }`}
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#004c47]/80 via-transparent to-[#004c47]/95" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left – Text */}
-            <div className="text-white mt-8 lg:mt-0">
-              <Badge className="bg-white/15 text-white border border-white/30 mb-6 px-4 py-1.5 backdrop-blur-md uppercase tracking-widest text-xs font-semibold inline-block">
-                Supporting Bones — Distributeur de Référence
-              </Badge>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-6">
-                L'Innovation au
-                <br />
-                Service des <span className="text-[#5dddc7]">Os</span>
-              </h1>
-              <p className="text-lg text-white/80 mb-10 leading-relaxed max-w-xl">
-                ABC Synthèse (Groupe Sabai Regragui) accompagne les chirurgiens avec des solutions 
-                implantables de pointe et une assistance terrain spécialisée.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  onClick={() => navigate('/produits')}
-                  size="lg"
-                  className="bg-[#1a8a7a] hover:bg-[#147a6a] text-white border-0 font-semibold px-8 h-14 text-base rounded-xl"
-                >
-                  Nos Spécialités
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <button
-                  onClick={() => navigate('/a-propos')}
-                  className="flex items-center gap-3 border-2 border-white/40 text-white hover:bg-white/10 transition-all font-semibold px-8 h-14 text-base rounded-xl"
-                >
-                  <Play className="w-5 h-5" />
-                  Profil Entreprise
-                </button>
-              </div>
-            </div>
-
-            {/* Right – Floated stat cards */}
-            <div className="hidden lg:grid grid-cols-2 gap-4">
-              {stats.map((stat, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-white text-center hover:bg-white/15 transition-all"
-                >
-                  <stat.icon className="w-8 h-8 mx-auto mb-3 text-[#5dddc7]" />
-                  <div className="text-4xl font-extrabold mb-1">{stat.value}</div>
-                  <div className="text-white/70 text-xs uppercase tracking-widest font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12">
+          <Badge className="bg-white/10 text-white border border-white/20 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full">
+            Supporting Bones — Distributeur de Référence
+          </Badge>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-white drop-shadow-xl">
+            L'Innovation au<br />Service des <span className="text-[#00a49a]">Os</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-md font-medium">
+            ABC Synthèse accompagne les chirurgiens avec des solutions 
+            implantables de pointe et une assistance terrain spécialisée.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Button
+              onClick={() => navigate('/produits')}
+              size="lg"
+              className="bg-[#00a49a] hover:bg-[#008f86] text-white border-0 font-bold px-10 h-14 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+            >
+              Nos Spécialités
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+            <button
+              onClick={() => navigate('/a-propos')}
+              className="flex items-center gap-3 bg-white/10 border border-white/30 text-white hover:bg-white/20 backdrop-blur-sm transition-all font-bold px-10 h-14 text-lg rounded-full"
+            >
+              <Play className="w-5 h-5" />
+              Profil Entreprise
+            </button>
           </div>
         </div>
       </section>
 
-      {/* ── ROBOT CUVIS SECTION ── */}
+      {/* ── STATS BAR (Overlapping Hero) ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 mb-16">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 border border-gray-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="text-center px-4">
+                <div className="w-14 h-14 mx-auto bg-[#f0f9f8] rounded-full flex items-center justify-center mb-5">
+                  <stat.icon className="w-7 h-7 text-[#00a49a]" />
+                </div>
+                <div className="text-4xl font-black text-gray-900 mb-2">{stat.value}</div>
+                <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── APPRENDRE À NOUS CONNAÎTRE (ABOUT) ── */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-[#5dddc7]/20 rounded-blank blur-2xl group-hover:bg-[#5dddc7]/30 transition-all" />
+              <div className="absolute -inset-4 bg-[#00a49a]/10 rounded-3xl blur-xl group-hover:bg-[#00a49a]/20 transition-all duration-500" />
               <img 
-                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000" 
-                alt="Robot CUVIS JOINT" 
-                className="relative rounded-3xl shadow-2xl border border-gray-100"
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1000" 
+                alt="Équipe ABC Synthèse" 
+                className="relative rounded-3xl shadow-xl border border-gray-100 object-cover h-[500px] w-full"
               />
-              <div className="absolute bottom-8 right-8 bg-white p-4 rounded-2xl shadow-lg flex items-center gap-2">
-                <span className="font-black text-[#0d5c50] tracking-tighter text-xl">CUREXO</span>
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                <div className="text-4xl font-black text-[#00a49a] mb-1">15+</div>
+                <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">
+                  Années d'Expertise
+                </div>
               </div>
             </div>
-            <div>
-              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-4">
-                Exclusivité — Futur de la Chirurgie
+            <div className="lg:pl-8">
+              <span className="inline-block text-[#00a49a] text-sm font-bold uppercase tracking-widest mb-4">
+                Apprendre à nous connaître
               </span>
-              <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-                Robot CUVIS JOINT<br />
-                <span className="text-[#1a8a7a]">Precision Beyond Cure</span>
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Notre Identité & <br />
+                <span className="text-[#046fcc]">Nos Valeurs</span>
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                Le système robotique de coupe le plus avancé pour le remplacement articulaire. 
-                Optimisation ct-based, coupe sub-millimétrique et sécurité maximale pour des résultats 
-                cliniques supérieurs.
+                Depuis sa création, <strong>ABC Synthèse</strong> s'est imposée comme un acteur majeur 
+                dans la distribution de dispositifs médicaux implantables au Maroc. Notre mission est 
+                d'accompagner les professionnels de santé avec des solutions innovantes, fiables et de très haute qualité.
               </p>
-              <ul className="space-y-4 mb-10">
+              <div className="grid grid-cols-2 gap-6 mb-10">
                 {[
-                  'Planification pré-opératoire 3D basée sur CT-scan',
-                  'Fraisage automatique de haute précision (6 axes)',
-                  'Gap Check intra-opératoire dynamique',
-                  'Réduction significative du temps de récupération'
+                  { title: 'Excellence', desc: 'Qualité certifiée ISO 9001/13485' },
+                  { title: 'Innovation', desc: 'Technologies médicales de pointe' },
+                  { title: 'Engagement', desc: 'Au service des patients' },
+                  { title: 'Proximité', desc: 'Assistance terrain 24/7' }
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-700">
-                    <CheckCircle2 className="w-5 h-5 text-[#1a8a7a]" />
-                    {item}
-                  </li>
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-full bg-[#f0f9f8] flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-[#00a49a]" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">{item.title}</h4>
+                      <p className="text-sm text-gray-500 mt-1 leading-snug">{item.desc}</p>
+                    </div>
+                  </div>
                 ))}
-              </ul>
+              </div>
               <Button 
-                onClick={() => navigate('/produits?category=equipements')}
-                className="bg-gray-900 hover:bg-black text-white h-12 px-8 rounded-xl font-bold"
+                onClick={() => navigate('/a-propos')}
+                className="bg-[#00a49a] hover:bg-[#008f86] text-white h-14 px-10 rounded-full font-bold text-base shadow-lg transition-all"
               >
-                Découvrir la Robotique
+                Découvrir ABC Synthèse
               </Button>
             </div>
           </div>
@@ -229,11 +254,11 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
               Domaines Thérapeutiques
             </span>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Une Expertise Multidisciplinaire</h2>
-            <div className="w-24 h-1.5 bg-[#1a8a7a] mx-auto rounded-full" />
+            <div className="w-24 h-1.5 bg-[#00a49a] mx-auto rounded-full" />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -248,10 +273,10 @@ export default function Home() {
                   alt={s.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a2e2a] via-[#0a2e2a]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent" />
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="bg-[#5dddc7]/20 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center mb-4 border border-white/20">
-                    <s.icon className="w-6 h-6 text-[#5dddc7]" />
+                  <div className="bg-[#00a49a]/20 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center mb-4 border border-white/20">
+                    <s.icon className="w-6 h-6 text-[#03b0a5]" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2">{s.title}</h3>
                   <p className="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
@@ -269,7 +294,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-14">
             <div>
-              <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
                 Innovations
               </span>
               <h2 className="text-4xl font-extrabold text-gray-900">Produits en Lumière</h2>
@@ -277,7 +302,7 @@ export default function Home() {
             <Button
               onClick={() => navigate('/produits')}
               variant="link"
-              className="text-[#1a8a7a] font-bold text-lg group"
+              className="text-[#00a49a] font-bold text-lg group"
             >
               Tous les produits
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
@@ -303,19 +328,19 @@ export default function Home() {
               <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all group border border-gray-100">
                 <div className="h-56 overflow-hidden relative">
                   <img src={actu.image} alt={actu.title} className="w-full h-full object-cover group-hover:scale-105 transition-all" />
-                  <span className="absolute top-4 right-4 bg-white/90 backdrop-blur text-[#0d5c50] text-xs font-bold px-3 py-1 rounded-lg">
+                  <span className="absolute top-4 right-4 bg-white/90 backdrop-blur text-[#046fcc] text-xs font-bold px-3 py-1 rounded-lg">
                     {actu.date}
                   </span>
                 </div>
                 <div className="p-8">
-                  <Badge className="bg-[#1a8a7a]/10 text-[#1a8a7a] border-0 mb-4">{actu.tag}</Badge>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#1a8a7a] transition-colors">
+                  <Badge className="bg-[#00a49a]/10 text-[#00a49a] border-0 mb-4">{actu.tag}</Badge>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#00a49a] transition-colors">
                     {actu.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed mb-6">
                     {actu.description}
                   </p>
-                  <Button variant="ghost" className="p-0 text-[#1a8a7a] font-bold hover:bg-transparent">
+                  <Button variant="ghost" className="p-0 text-[#00a49a] font-bold hover:bg-transparent">
                     Lire la suite <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
@@ -330,7 +355,7 @@ export default function Home() {
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
               Réseau Mondial
             </span>
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Nos Partenaires</h2>
@@ -366,7 +391,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block text-[#1a8a7a] text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
               Confiance & Crédibilité
             </span>
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Nos Références</h2>
@@ -395,36 +420,36 @@ export default function Home() {
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="py-24 relative overflow-hidden bg-[#0d5c50]">
-        <div className="absolute inset-0 opacity-5">
+      <section className="py-24 relative overflow-hidden bg-[#f0f9f8]">
+        <div className="absolute inset-0 opacity-[0.03]">
           <div
             className="w-full h-full"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300a49a' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           />
         </div>
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <span className="inline-block text-[#5dddc7] text-xs font-bold uppercase tracking-widest mb-5">
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[#004c47]">
+          <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-5">
             Contactez-nous
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
             Votre Partenaire Médical de Confiance
           </h2>
-          <p className="text-xl text-white/75 mb-10 leading-relaxed">
+          <p className="text-xl text-[#004c47]/80 mb-10 leading-relaxed">
             Un besoin urgent ? Une demande technique ? Nos conseillers sont à votre disposition 
             pour vous accompagner dans le choix des meilleures solutions cliniques.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <QuoteButton
               size="lg"
-              className="bg-[#5dddc7] text-[#0d5c50] hover:bg-white font-bold px-8 h-14 rounded-xl text-base"
+              className="bg-[#00a49a] text-white hover:bg-[#008f86] font-bold px-8 h-14 rounded-lg text-base"
             />
             <Button
               onClick={() => navigate('/contact')}
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-[#0d5c50] h-14 px-10 rounded-xl font-bold text-base bg-transparent"
+              className="border-2 border-[#00a49a] text-[#00a49a] hover:bg-[#00a49a] hover:text-white h-14 px-10 rounded-lg font-bold text-base bg-transparent transition-colors"
             >
               Contactez-nous
             </Button>
