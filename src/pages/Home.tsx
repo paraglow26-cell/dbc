@@ -421,6 +421,55 @@ export default function Home() {
       </motion.section>
 
 
+      {/* ── CERTIFICATIONS ── */}
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-[#f0f9f8] border-t border-gray-100"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
+              Gage de Qualité
+            </span>
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Nos Certifications</h2>
+            <div className="w-24 h-1.5 bg-[#00a49a] mx-auto rounded-full mb-6" />
+            <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
+              Nous répondons aux normes internationales les plus strictes pour garantir la sécurité et la fiabilité de nos dispositifs médicaux.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <motion.div 
+              whileHover={{ y: -10, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)" }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 flex flex-col md:flex-row items-center max-w-3xl w-full gap-8"
+            >
+              <div className="shrink-0 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                <img 
+                  src="/certifications/bureau-veritas.png" 
+                  alt="Certification Bureau Veritas 1828" 
+                  className="h-32 md:h-40 w-auto object-contain"
+                />
+              </div>
+              <div className="text-center md:text-left">
+                <Badge className="bg-[#00a49a]/10 text-[#00a49a] border-0 mb-4 hover:bg-[#00a49a]/20">ISO Certifié</Badge>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Bureau Veritas Certification</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  ABC Synthèse est certifiée par Bureau Veritas, attestant de notre engagement indéfectible envers la qualité, la traçabilité et la conformité aux normes internationales les plus exigeantes dans le domaine de la distribution de dispositifs médicaux.
+                </p>
+                <div className="flex items-center justify-center md:justify-start gap-2 text-[#00a49a] font-bold text-sm">
+                  <Shield className="w-5 h-5" />
+                  <span>Qualité & Conformité Garanties</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* ── NOS PARTENAIRES ── */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }}
