@@ -13,6 +13,7 @@ import {
   Activity,
   Microscope,
   Cpu,
+} from 'lucide-react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { useRef } from 'react';
 import presidentImg from '@/assets/president.jpg';
