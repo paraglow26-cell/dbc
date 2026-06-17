@@ -93,11 +93,7 @@ const timeline = [
     title: 'Spécialisation Chirurgicale',
     description: 'Intégration des spécialités Arthroscopie et Arthroplastie avec des partenaires mondiaux.',
   },
-  {
-    year: '2024',
-    title: 'Robotique Cuvis Joint',
-    description: 'Introduction du premier robot chirurgical de coupe active au Maroc en partenariat avec Curexo.',
-  },
+
   {
     year: '2025',
     title: 'Hub Stratégique Casablanca',
