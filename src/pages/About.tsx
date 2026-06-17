@@ -14,6 +14,7 @@ import {
   Microscope,
   Cpu,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui-custom/SectionHeader';
 import presidentImg from '@/assets/president.jpg';
 
@@ -102,7 +103,12 @@ export default function About() {
   return (
     <div className="min-h-screen pt-32 pb-16">
       {/* ── PAGE HERO ── */}
-      <section className="relative py-20 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="relative py-20 bg-gradient-to-br from-[#004c47] to-[#00a49a] overflow-hidden">
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -139,10 +145,15 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── MOT DU PRÉSIDENT ── */}
-      <section className="py-24 bg-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
              <div className="relative">
@@ -179,10 +190,15 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── MISSION & VISION ── */}
-      <section className="py-20 bg-gray-50">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-3">
@@ -212,10 +228,15 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── DOMAINES D'ACTIVITÉ ── */}
-      <section className="py-20 bg-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="inline-block text-promamec-teal text-xs font-bold uppercase tracking-widest mb-3">
@@ -240,10 +261,15 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── VALEURS ── */}
-      <section className="py-20 bg-gray-50">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             subtitle="Nos Valeurs"
@@ -262,10 +288,15 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── CERTIFICATIONS ── */}
-      <section className="py-20 bg-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -314,10 +345,15 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── TIMELINE ── */}
-      <section className="py-20 bg-gray-50">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             subtitle="Notre Histoire"
@@ -349,10 +385,15 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── ADRESSE ── */}
-      <section className="py-20 bg-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -390,7 +431,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

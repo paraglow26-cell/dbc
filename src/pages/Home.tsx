@@ -112,7 +112,7 @@ export default function Home() {
   const heroSlides = [
     {
       image: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=85&w=2400",
-      badge: "Supporting Bones — Distributeur de Référence",
+      badge: "",
       title: <>L'Innovation au<br />Service des <span className="text-[#00a49a]">Os</span></>,
       description: "ABC Synthèse accompagne les chirurgiens avec des solutions implantables de pointe et une assistance terrain spécialisée."
     },
@@ -168,9 +168,11 @@ export default function Home() {
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <Badge className="bg-white/10 text-white border border-white/20 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full">
-                {heroSlides[currentImageIdx].badge}
-              </Badge>
+              {heroSlides[currentImageIdx].badge && (
+                <Badge className="bg-white/10 text-white border border-white/20 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full">
+                  {heroSlides[currentImageIdx].badge}
+                </Badge>
+              )}
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-white drop-shadow-xl">
                 {heroSlides[currentImageIdx].title}
