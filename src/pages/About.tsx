@@ -217,9 +217,6 @@ export default function About() {
                   <div className="absolute inset-0 bg-[#00a49a]/5 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
                   <p className="relative z-10">Notre expertise réside dans notre capacité à accompagner le chirurgien au cœur de son métier grâce à un support technique irréprochable et une formation continue via ABC TRAINING.</p>
                 </motion.div>
-                <motion.p variants={fadeInUp}>
-                  En introduisant la robotique Cuvis Joint, nous confirmons notre engagement à effacer la barrière entre l'innovation internationale et le bloc opératoire marocain.
-                </motion.p>
               </motion.div>
             </div>
           </motion.div>
