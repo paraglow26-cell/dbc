@@ -211,11 +211,11 @@ export default function About() {
               </motion.h2>
               <motion.div variants={staggerContainer} className="space-y-6 text-gray-600 text-lg leading-relaxed">
                 <motion.p variants={fadeInUp}>
-                  ABC Synthèse est née d'une vision claire : devenir le partenaire privilégié de la communauté chirurgicale au Maroc en lui offrant des outils de classe mondiale.
+                  ABC Synthèse est une société spécialisée dans l'importation, la vente et la distribution de dispositifs médicaux, notamment : Implants orthopédiques, Instruments chirurgicaux, Matériel de traumatologie et de neurochirurgie, et consommables médicaux destinés aux secteurs public et privé.
                 </motion.p>
                 <motion.div variants={fadeInUp} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 font-medium text-gray-900 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-[#00a49a]/5 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-                  <p className="relative z-10">Notre expertise réside dans notre capacité à accompagner le chirurgien au cœur de son métier grâce à un support technique irréprochable et une formation continue via ABC TRAINING.</p>
+                  <p className="relative z-10">Depuis sa création, ABC Synthèse œuvre pour offrir des produits de haute qualité et des services adaptés aux besoins du marché marocain. Elle représente des fabricants de renommée internationale et demeure en veille constante afin d'introduire de nouvelles technologies et solutions médicales innovantes.</p>
                 </motion.div>
               </motion.div>
             </div>
