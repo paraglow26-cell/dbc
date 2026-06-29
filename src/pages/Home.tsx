@@ -238,10 +238,27 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── CONTROLS & PROGRESS ── */}
-        <div className="absolute bottom-12 left-0 right-0 z-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            {/* Dots */}
+        {/* ── ARROWS (Vertically Centered) ── */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 pointer-events-none">
+          <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:flex">
+            <button 
+              onClick={prevSlide}
+              className="w-14 h-14 rounded-full border border-white/20 bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a49a] hover:border-[#00a49a] transition-all pointer-events-auto"
+            >
+              <ChevronLeft className="w-8 h-8 -ml-1" />
+            </button>
+            <button 
+              onClick={nextSlide}
+              className="w-14 h-14 rounded-full border border-white/20 bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a49a] hover:border-[#00a49a] transition-all pointer-events-auto"
+            >
+              <ChevronRight className="w-8 h-8 ml-1" />
+            </button>
+          </div>
+        </div>
+
+        {/* ── PROGRESS DOTS ── */}
+        <div className="absolute bottom-40 left-0 right-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
             <div className="flex items-center gap-4">
               {heroSlides.map((_, idx) => (
                 <button
@@ -261,22 +278,6 @@ export default function Home() {
                   )}
                 </button>
               ))}
-            </div>
-
-            {/* Arrows */}
-            <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex">
-              <button 
-                onClick={prevSlide}
-                className="w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a49a] hover:border-[#00a49a] transition-all"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={nextSlide}
-                className="w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a49a] hover:border-[#00a49a] transition-all"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
             </div>
           </div>
         </div>
