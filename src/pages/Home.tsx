@@ -17,6 +17,8 @@ import {
   Play,
   Cpu,
   Map,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';
@@ -131,81 +133,152 @@ export default function Home() {
   ];
 
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentImageIdx((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused, currentImageIdx]);
+
+  const nextSlide = () => setCurrentImageIdx((prev) => (prev + 1) % heroSlides.length);
+  const prevSlide = () => setCurrentImageIdx((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   return (
     <div className="min-h-screen">
-      {/* ── HERO ── */}
-      <section className="relative pt-32 pb-48 overflow-hidden bg-slate-900">
+      {/* ── PREMIUM HERO SLIDER ── */}
+      <section 
+        className="relative pt-32 pb-48 overflow-hidden bg-slate-900 group"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className="absolute inset-0">
-          <AnimatePresence>
-            <motion.img
-              key={`img-${currentImageIdx}`}
-              src={heroSlides[currentImageIdx].image}
-              alt="ABC Synthèse"
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 0.4, scale: 1 }}
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={`bg-${currentImageIdx}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#004c47]/80 via-transparent to-[#004c47]/95" />
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12 min-h-[300px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`content-${currentImageIdx}`}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="absolute inset-0"
             >
-              {heroSlides[currentImageIdx].badge && (
-                <Badge className="bg-white/10 text-white border border-white/20 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full">
-                  {heroSlides[currentImageIdx].badge}
-                </Badge>
-              )}
-              
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-white drop-shadow-xl">
-                {heroSlides[currentImageIdx].title}
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-md font-medium">
-                {heroSlides[currentImageIdx].description}
-              </p>
+              <motion.img
+                src={heroSlides[currentImageIdx].image}
+                alt="Background"
+                initial={{ scale: 1.15 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 12, ease: "easeOut" }}
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           </AnimatePresence>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-6"
-          >
-            <Button
-              onClick={() => navigate('/produits')}
-              size="lg"
-              className="bg-[#00a49a] hover:bg-[#008f86] text-white border-0 font-bold px-10 h-14 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
-            >
-              Nos Spécialités
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <button
-              onClick={() => navigate('/a-propos')}
-              className="flex items-center gap-3 bg-white/10 border border-white/30 text-white hover:bg-white/20 backdrop-blur-sm transition-all font-bold px-10 h-14 text-lg rounded-full"
-            >
-              <Play className="w-5 h-5" />
-              Profil Entreprise
-            </button>
-          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#004c47]/90 via-transparent to-transparent" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center min-h-[450px]">
+          <div className="max-w-3xl mt-12 text-left">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`content-${currentImageIdx}`}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.15 }}
+                className="relative z-10"
+              >
+                {heroSlides[currentImageIdx].badge && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+                  >
+                    <Badge className="bg-white/10 text-[#a3e2de] border border-[#a3e2de]/30 mb-8 px-6 py-2 backdrop-blur-md uppercase tracking-widest text-sm font-bold inline-block rounded-full shadow-lg">
+                      {heroSlides[currentImageIdx].badge}
+                    </Badge>
+                  </motion.div>
+                )}
+                
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
+                  className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-white drop-shadow-2xl"
+                >
+                  {heroSlides[currentImageIdx].title}
+                </motion.h1>
+                
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
+                  className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed drop-shadow-md font-medium max-w-2xl"
+                >
+                  {heroSlides[currentImageIdx].description}
+                </motion.p>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}
+                  className="flex flex-wrap gap-6"
+                >
+                  <Button
+                    onClick={() => navigate('/produits')}
+                    size="lg"
+                    className="bg-[#00a49a] hover:bg-[#008f86] text-white border-0 font-bold px-10 h-14 text-lg rounded-full shadow-[0_0_40px_-10px_rgba(0,164,154,0.5)] hover:shadow-[0_0_60px_-10px_rgba(0,164,154,0.7)] transition-all duration-300"
+                  >
+                    Nos Spécialités
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                  <button
+                    onClick={() => navigate('/a-propos')}
+                    className="flex items-center gap-3 bg-white/5 border border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all font-bold px-10 h-14 text-lg rounded-full"
+                  >
+                    <Play className="w-5 h-5 fill-white" />
+                    Profil Entreprise
+                  </button>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* ── CONTROLS & PROGRESS ── */}
+        <div className="absolute bottom-12 left-0 right-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            {/* Dots */}
+            <div className="flex items-center gap-4">
+              {heroSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentImageIdx(idx)}
+                  className="relative h-2 rounded-full overflow-hidden transition-all duration-500 bg-white/20"
+                  style={{ width: currentImageIdx === idx ? '64px' : '32px' }}
+                >
+                  {currentImageIdx === idx && (
+                    <motion.div 
+                      key={`progress-${currentImageIdx}-${isPaused ? 'paused' : 'playing'}`}
+                      initial={{ width: isPaused ? "100%" : "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: isPaused ? 0 : 6, ease: "linear" }}
+                      className="absolute inset-y-0 left-0 bg-[#00a49a]"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Arrows */}
+            <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex">
+              <button 
+                onClick={prevSlide}
+                className="w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a49a] hover:border-[#00a49a] transition-all"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button 
+                onClick={nextSlide}
+                className="w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#00a49a] hover:border-[#00a49a] transition-all"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
