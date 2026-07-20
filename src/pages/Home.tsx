@@ -19,10 +19,13 @@ import {
   ChevronLeft,
   ChevronRight,
   PlayCircle,
-  Star
+  Star,
+  MapPin,
+  Building2
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';
+import NationalPresence from '@/components/ui-custom/NationalPresence';
 
 const stats = [
   { value: 15, suffix: '+', label: "Ans d'Expertise", icon: Award },
@@ -687,48 +690,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA (Animated Background) ── */}
-      <section className="relative py-24 bg-slate-900 overflow-hidden">
-        {/* Animated gradients */}
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-1/4 w-96 h-96 bg-[#00a49a] rounded-full blur-[128px]"
-        />
-        <motion.div 
-          animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }} 
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#046fcc] rounded-full blur-[128px]"
-        />
+      <NationalPresence />
 
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10">
+      {/* ── BOTTOM CTA (Redesigned) ── */}
+      <section className="relative py-24 bg-[#1B5E50] overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10 blur-[100px]" />
+          <div className="absolute bottom-0 -left-20 w-80 h-80 rounded-full bg-[#00a49a]/30 blur-[100px]" />
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="cta-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="currentColor" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#cta-pattern)" className="text-white" />
+          </svg>
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center justify-center p-4 mb-6 bg-white/10 rounded-2xl backdrop-blur-md border border-white/20 shadow-2xl"
+          >
+            <Building2 className="w-8 h-8 text-white" />
+          </motion.div>
+
           <motion.h2 
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-extrabold mb-6"
+            className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-white"
           >
-            Passez à l'étape supérieure.
+            Prêt à passer à l'<span className="text-[#00a49a]">étape supérieure</span> ?
           </motion.h2>
+          
           <motion.p 
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-slate-300 text-lg mb-10 max-w-2xl mx-auto"
+            className="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Demandez un devis, téléchargez nos documentations ou contactez nos experts pour une démonstration de nos produits au sein de votre établissement.
+            Demandez un devis, téléchargez nos documentations ou contactez nos experts pour une démonstration sur mesure au sein de votre établissement.
           </motion.p>
+
           <motion.div 
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
               onClick={() => navigate('/contact')}
               size="lg"
-              className="bg-[#00a49a] text-white hover:bg-[#03b0a5] font-bold px-10 h-14 rounded-full shadow-[0_0_20px_rgba(0,164,154,0.4)]"
+              className="w-full sm:w-auto bg-[#00a49a] text-white hover:bg-white hover:text-[#1B5E50] transition-colors duration-300 font-bold px-10 h-14 rounded-full shadow-lg"
             >
               Nous Contacter
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-white/30 text-white hover:bg-white/10 h-14 px-10 rounded-full font-bold bg-transparent backdrop-blur-sm"
+              className="w-full sm:w-auto border-2 border-white/30 text-white hover:bg-white hover:text-[#1B5E50] transition-colors duration-300 h-14 px-10 rounded-full font-bold bg-transparent backdrop-blur-sm"
             >
               <FileText className="w-5 h-5 mr-2" />
               Espace Documentaire
