@@ -20,7 +20,6 @@ import {
   ChevronRight,
   PlayCircle,
   Star,
-  MapPin,
   Building2
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
