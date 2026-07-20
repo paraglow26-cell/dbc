@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CountUp from 'react-countup';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import {
   ArrowRight,
   Shield,
   Award,
