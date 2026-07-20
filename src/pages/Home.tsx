@@ -1,32 +1,27 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import CountUp from 'react-countup';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import {
   ArrowRight,
   Shield,
   Award,
   Users,
-  CheckCircle2,
   Activity,
   Bone,
   Cpu,
   Map,
   Globe,
-  Settings,
   Microscope,
   FileText,
   ChevronLeft,
   ChevronRight,
   PlayCircle,
-  PauseCircle,
   Star
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';
-import QuoteButton from '@/components/ui-custom/QuoteButton';
 
 const stats = [
   { value: 15, suffix: '+', label: "Ans d'Expertise", icon: Award },
@@ -66,26 +61,7 @@ const specialites = [
   },
 ];
 
-const actualites = [
-  {
-    date: 'Mars 2026',
-    tag: 'Innovation',
-    title: 'Lancement du système robotique Cuvis Joint',
-    image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=80&w=600',
-  },
-  {
-    date: 'Janvier 2026',
-    tag: 'Événement',
-    title: 'Participation au Congrès National d\'Orthopédie',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600',
-  },
-  {
-    date: 'Décembre 2025',
-    tag: 'Formation',
-    title: 'Atelier de chirurgie rachidienne à Casablanca',
-    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=600',
-  },
-];
+
 
 const heroSlides = [
   {
@@ -120,8 +96,6 @@ export default function Home() {
   // Slider state and handlers
   const [[page, direction], setPage] = useState([0, 0]);
   const [isPaused, setIsPaused] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   const currentSlide = Math.abs(page % heroSlides.length);
 
@@ -138,7 +112,7 @@ export default function Home() {
   }, [isPaused, page]);
 
   // Framer Motion variants for advanced slider transition
-  const slideVariants = {
+  const slideVariants: any = {
     enter: (direction: number) => {
       return {
         x: direction > 0 ? 1000 : -1000,
@@ -176,7 +150,7 @@ export default function Home() {
     }
   };
 
-  const textRevealVariants = {
+  const textRevealVariants: any = {
     hidden: { y: "100%", opacity: 0 },
     visible: { 
       y: 0, 
@@ -185,7 +159,7 @@ export default function Home() {
     }
   };
 
-  const staggerContainer = {
+  const staggerContainer: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -193,7 +167,7 @@ export default function Home() {
     }
   };
 
-  const fadeUpVariant = {
+  const fadeUpVariant: any = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
@@ -218,7 +192,7 @@ export default function Home() {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={1}
-            onDragEnd={(e, { offset, velocity }) => {
+            onDragEnd={(_, { offset, velocity }) => {
               const swipe = Math.abs(offset.x) * velocity.x;
               if (swipe < -10000) {
                 paginate(1);
