@@ -15,23 +15,14 @@ import {
   Map,
   Globe,
   Microscope,
-  FileText,
   ChevronLeft,
   ChevronRight,
   PlayCircle,
   Star,
-  Building2
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import ProductCard from '@/components/ui-custom/ProductCard';
 import NationalPresence from '@/components/ui-custom/NationalPresence';
-
-const stats = [
-  { value: 15, suffix: '+', label: "Ans d'Expertise", icon: Award },
-  { value: 90, suffix: '+', label: 'Collaborateurs', icon: Users },
-  { value: 12, suffix: '', label: 'Antennes Nationales', icon: Map },
-  { value: 20, suffix: '+', label: 'Partenaires Mondiaux', icon: Globe },
-];
 
 const specialites = [
   {
