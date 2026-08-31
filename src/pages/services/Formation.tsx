@@ -16,7 +16,7 @@ export default function Formation() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=80&w=2000"
-            alt="Formation Clinique ABC Synthèse"
+            alt="Formation Clinique ABC Synthese"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#003b37] via-[#004c47]/90 to-[#00a49a]/80" />
@@ -29,7 +29,7 @@ export default function Formation() {
             Formation & Expertise Scientifique
           </h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            ABC Synthèse investit dans le développement professionnel continu pour garantir 
+            ABC Synthese investit dans le développement professionnel continu pour garantir 
             une précision chirurgicale optimale et une maîtrise des technologies de demain.
           </p>
         </div>

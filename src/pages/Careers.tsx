@@ -20,7 +20,7 @@ export default function Careers() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-extrabold text-white mb-6"
           >
-            Rejoignez <span className="text-[#00a49a]">ABC Synthèse</span>
+            Rejoignez <span className="text-[#00a49a]">ABC Synthese</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export default function Careers() {
           <Briefcase className="w-12 h-12 text-[#00a49a] mx-auto mb-6" />
           <h2 className="text-3xl font-bold mb-6">Construisez votre carrière avec nous</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Chez ABC Synthèse, nous recherchons des talents passionnés par l'innovation médicale,
+            Chez ABC Synthese, nous recherchons des talents passionnés par l'innovation médicale,
             le service de qualité et l'engagement envers le patient. Que vous soyez un expert
             en vente, un technicien spécialisé, ou un professionnel du support clinique,
             votre place est parmi nous.

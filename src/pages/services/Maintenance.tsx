@@ -19,7 +19,7 @@ export default function Maintenance() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000"
-            alt="SAV & Expertise Terrain ABC Synthèse"
+            alt="SAV & Expertise Terrain ABC Synthese"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />
@@ -47,7 +47,7 @@ export default function Maintenance() {
                 Plus qu'une maintenance,<br />une présence chirurgicale.
               </h2>
               <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-                Chez ABC Synthèse, notre service ne s'arrête pas à la livraison. Nous comprenons les 
+                Chez ABC Synthese, notre service ne s'arrête pas à la livraison. Nous comprenons les 
                 besoins réels des chirurgiens grâce à une immersion totale dans l'environnement clinique.
               </p>
               

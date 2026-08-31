@@ -39,7 +39,7 @@ export default function NationalPresence() {
         {/* Morocco map image containing all pins and labels — dictates height of section */}
         <img
           src="/morocco-map-full.png"
-          alt="Carte de présence nationale DBC Synthèse"
+          alt="Carte de présence nationale ABC Synthese"
           className="w-full h-auto block"
         />
       </div>

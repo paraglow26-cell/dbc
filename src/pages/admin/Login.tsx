@@ -54,7 +54,7 @@ export default function AdminLogin() {
           </div>
           <CardTitle className="text-2xl">Administration</CardTitle>
           <p className="text-gray-500 text-sm mt-2">
-            ABC Synthèse - Espace réservé
+            ABC Synthese - Espace réservé
           </p>
         </CardHeader>
         <CardContent>

@@ -84,7 +84,7 @@ export default function Contact() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000"
-            alt="ABC Synthèse – Contact"
+            alt="ABC Synthese – Contact"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />

@@ -114,7 +114,7 @@ export default function Quote() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000"
-            alt="ABC Synthèse – Devis"
+            alt="ABC Synthese – Devis"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#003b37]/90 to-[#004c47]/90" />

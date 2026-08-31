@@ -6,7 +6,7 @@ import logo from '@/assets/logo-dbc.png';
 
 const navItems = [
   { name: 'Accueil', href: '/' },
-  { name: 'ABC Synthèse', href: '/a-propos' },
+  { name: 'ABC Synthese', href: '/a-propos' },
   {
     name: 'Nos Solutions',
     href: '/produits',
@@ -92,7 +92,7 @@ export default function Header() {
             >
               <img
                 src={logo}
-                alt="ABC Synthèse"
+                alt="ABC Synthese"
                 style={{ height: isScrolled ? '70px' : '90px', width: 'auto', transition: 'height 0.3s' }}
               />
             </Link>

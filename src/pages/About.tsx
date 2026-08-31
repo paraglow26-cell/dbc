@@ -80,7 +80,7 @@ const certifications = [
 const timeline = [
   {
     year: '2016',
-    title: 'Fondation d\'ABC Synthèse',
+    title: 'Fondation d\'ABC Synthese',
     description: 'Création de l\'entreprise avec une vision claire : moderniser l\'ostéosynthèse au Maroc.',
   },
   {
@@ -102,7 +102,7 @@ const timeline = [
   {
     year: '2026',
     title: 'Leader de l\'Ère Digitale',
-    description: 'ABC Synthèse devient l\'acteur clé de la chirurgie assistée par ordinateur au Royaume.',
+    description: 'ABC Synthese devient l\'acteur clé de la chirurgie assistée par ordinateur au Royaume.',
   },
 ];
 
@@ -147,10 +147,10 @@ export default function About() {
                 L'Entreprise
               </motion.span>
               <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-md">
-                À propos de<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-white">ABC Synthèse</span>
+                À propos de<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-white">ABC Synthese</span>
               </motion.h1>
               <motion.p variants={fadeInUp} className="text-xl text-white/90 leading-relaxed max-w-xl font-medium drop-shadow">
-                Depuis 2016, ABC Synthèse accompagne les chirurgiens marocains avec des solutions 
+                Depuis 2016, ABC Synthese accompagne les chirurgiens marocains avec des solutions 
                 médicales d'excellence. Notre slogan "Supporting Bones" incarne notre mission de 
                 restaurer la mobilité à travers l'innovation technologique.
               </motion.p>
@@ -211,11 +211,11 @@ export default function About() {
               </motion.h2>
               <motion.div variants={staggerContainer} className="space-y-6 text-gray-600 text-lg leading-relaxed">
                 <motion.p variants={fadeInUp}>
-                  ABC Synthèse est une société spécialisée dans l'importation, la vente et la distribution de dispositifs médicaux, notamment : Implants orthopédiques, Instruments chirurgicaux, Matériel de traumatologie et de neurochirurgie, et consommables médicaux destinés aux secteurs public et privé.
+                  ABC Synthese est une société spécialisée dans l'importation, la vente et la distribution de dispositifs médicaux, notamment : Implants orthopédiques, Instruments chirurgicaux, Matériel de traumatologie et de neurochirurgie, et consommables médicaux destinés aux secteurs public et privé.
                 </motion.p>
                 <motion.div variants={fadeInUp} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 font-medium text-gray-900 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-[#00a49a]/5 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-                  <p className="relative z-10">Depuis sa création, ABC Synthèse œuvre pour offrir des produits de haute qualité et des services adaptés aux besoins du marché marocain. Elle représente des fabricants de renommée internationale et demeure en veille constante afin d'introduire de nouvelles technologies et solutions médicales innovantes.</p>
+                  <p className="relative z-10">Depuis sa création, ABC Synthese œuvre pour offrir des produits de haute qualité et des services adaptés aux besoins du marché marocain. Elle représente des fabricants de renommée internationale et demeure en veille constante afin d'introduire de nouvelles technologies et solutions médicales innovantes.</p>
                 </motion.div>
               </motion.div>
             </div>
@@ -522,7 +522,7 @@ export default function About() {
               <div className="absolute inset-0 bg-[#00a49a]/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-700" />
               <img
                 src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1000"
-                alt="ABC Synthèse – Casablanca Hub"
+                alt="ABC Synthese – Casablanca Hub"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
               />
             </motion.div>

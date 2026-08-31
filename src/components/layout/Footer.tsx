@@ -27,11 +27,11 @@ export default function Footer() {
             <div className="space-y-6">
               <Link to="/" className="inline-block mb-2">
                 <div className="bg-white rounded-xl px-4 py-3 inline-block">
-                  <img src={logo} alt="ABC Synthèse" className="h-20 w-auto" />
+                  <img src={logo} alt="ABC Synthese" className="h-20 w-auto" />
                 </div>
               </Link>
               <p className="text-white/80 text-sm leading-relaxed">
-                Forte de plus de 15 ans d'expérience, ABC Synthèse offre des dispositifs médicaux de
+                Forte de plus de 15 ans d'expérience, ABC Synthese offre des dispositifs médicaux de
                 qualité certifiée ISO 13485. La satisfaction de nos partenaires de santé est au cœur de
                 notre engagement.
               </p>
@@ -135,7 +135,7 @@ export default function Footer() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/60 text-xs">
-                © {new Date().getFullYear()} ABC Synthèse - Tous droits réservés
+                © {new Date().getFullYear()} ABC Synthese - Tous droits réservés
               </p>
               
               <div className="flex gap-6 text-xs">
@@ -146,7 +146,7 @@ export default function Footer() {
 
               <div className="flex items-center gap-4">
                 <p className="text-white/60 text-xs">
-                  Réalisé par <span className="font-bold text-white/90">ABC SYNTHÈSE</span>
+                  Réalisé par <span className="font-bold text-white/90">ABC SYNTHESE</span>
                 </p>
                 <button
                   onClick={scrollToTop}
