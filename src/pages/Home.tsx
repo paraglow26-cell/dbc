@@ -742,16 +742,16 @@ export default function Home() {
                   <PlayCircle className="w-10 h-10 ml-1" />
                 </motion.button>
               </div>
-              {/* Floating Certification Badge */}
+              {/* Floating Certification Badge — double cert */}
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4"
+                className="absolute -bottom-8 -right-8 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3"
               >
-                <img src="/Certifications/bureau-veritas.png" alt="Bureau Veritas" className="h-12 w-auto" />
+                <img src="/Certifications/bureau-veritas.png" alt="Bureau Veritas" className="h-10 w-auto" />
                 <div>
                   <p className="text-xs font-bold text-slate-400 uppercase">Certifié</p>
-                  <p className="font-extrabold text-slate-900 text-sm">ISO 13485:2016</p>
+                  <p className="font-extrabold text-slate-900 text-xs">ISO 13485 · ISO 9001</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -863,7 +863,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CERTIFICAT OFFICIEL EXPLICITE ── */}
+      {/* ── CERTIFICATS OFFICIELS ── */}
       <motion.section 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -871,39 +871,122 @@ export default function Home() {
         transition={{ duration: 1 }}
         className="py-24 bg-white border-y border-slate-100"
       >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-[3rem] p-10 lg:p-16 shadow-xl border border-slate-200 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
-            {/* Decors */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00a49a]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
-            
-            <motion.div 
-              whileHover={{ scale: 1.05, rotate: -2 }}
-              className="w-full md:w-1/3 flex justify-center relative z-10"
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <Badge className="bg-[#00a49a]/10 text-[#00a49a] border-0 mb-4 px-4 py-1 uppercase tracking-widest">
+              Certifications
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-3">
+              Qualité <span className="text-[#00a49a]">Certifiée & Reconnue</span>
+            </h2>
+            <p className="text-slate-500 max-w-xl mx-auto">
+              Nos certifications attestent de notre engagement irréprochable envers la qualité et la sécurité des dispositifs médicaux.
+            </p>
+          </motion.div>
+
+          {/* Two Certification Cards */}
+          <div className="grid md:grid-cols-2 gap-8">
+
+            {/* Card 1 — ISO 13485 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative bg-gradient-to-br from-slate-50 to-white rounded-[2rem] p-8 shadow-lg border border-slate-200 hover:border-[#00a49a]/40 hover:shadow-[0_20px_60px_rgba(0,164,154,0.15)] transition-all duration-500 overflow-hidden flex flex-col items-center text-center"
             >
-              <div className="bg-white p-6 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-100">
+              {/* Accent glow */}
+              <div className="absolute top-0 left-0 w-48 h-48 bg-[#00a49a]/8 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3 group-hover:bg-[#00a49a]/15 transition-all duration-500" />
+              <div className="absolute top-0 inset-x-8 h-1 rounded-full bg-gradient-to-r from-[#00a49a] to-[#046fcc] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Stars */}
+              <div className="flex items-center gap-1 text-amber-400 mb-5 relative z-10">
+                {[...Array(5)].map((_, i) => <Star key={i} className="fill-current w-4 h-4" />)}
+              </div>
+
+              {/* Logo */}
+              <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 mb-6 relative z-10">
                 <img 
                   src="/Certifications/bureau-veritas.png" 
-                  alt="Certificat Bureau Veritas" 
-                  className="w-full max-w-[200px] h-auto object-contain"
+                  alt="Bureau Veritas ISO 13485" 
+                  className="h-16 w-auto object-contain"
                 />
               </div>
-            </motion.div>
-            
-            <div className="w-full md:w-2/3 relative z-10 text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2 text-amber-500 mb-4">
-                <Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" />
+
+              {/* ISO Badge */}
+              <div className="bg-[#00a49a]/10 border border-[#00a49a]/30 text-[#00a49a] font-black text-2xl px-6 py-2 rounded-xl mb-4 relative z-10 tracking-tight">
+                ISO 13485 : 2016
               </div>
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-4">
-                Qualité Certifiée <span className="text-[#00a49a]">ISO 13485</span>
-              </h2>
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                ABC Synthese est fière d'être certifiée par <strong>Bureau Veritas</strong>. Ce certificat atteste de notre système de management de la qualité rigoureux, spécifiquement conçu pour la distribution de dispositifs médicaux implantables en toute sécurité.
+
+              <h3 className="text-lg font-extrabold text-slate-900 mb-2 relative z-10">
+                Systèmes de Management de la Qualité
+              </h3>
+              <p className="text-slate-500 text-sm leading-relaxed relative z-10">
+                Certifié par <strong className="text-slate-700">Bureau Veritas</strong> — dispositifs médicaux implantables distribués avec rigueur et traçabilité absolue.
               </p>
-              <Button className="bg-[#00a49a] hover:bg-[#03b0a5] text-white rounded-full font-bold px-8 h-12">
-                Voir la politique Qualité
-              </Button>
-            </div>
+            </motion.div>
+
+            {/* Card 2 — ISO 9001 */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative bg-gradient-to-br from-slate-50 to-white rounded-[2rem] p-8 shadow-lg border border-slate-200 hover:border-[#046fcc]/40 hover:shadow-[0_20px_60px_rgba(4,111,204,0.15)] transition-all duration-500 overflow-hidden flex flex-col items-center text-center"
+            >
+              {/* Accent glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#046fcc]/8 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 group-hover:bg-[#046fcc]/15 transition-all duration-500" />
+              <div className="absolute top-0 inset-x-8 h-1 rounded-full bg-gradient-to-r from-[#046fcc] to-[#00a49a] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Stars */}
+              <div className="flex items-center gap-1 text-amber-400 mb-5 relative z-10">
+                {[...Array(5)].map((_, i) => <Star key={i} className="fill-current w-4 h-4" />)}
+              </div>
+
+              {/* Logo */}
+              <div className="bg-white p-5 rounded-2xl shadow-md border border-slate-100 mb-6 relative z-10">
+                <img 
+                  src="/Certifications/bureau-veritas.png" 
+                  alt="Bureau Veritas ISO 9001" 
+                  className="h-16 w-auto object-contain"
+                />
+              </div>
+
+              {/* ISO Badge */}
+              <div className="bg-[#046fcc]/10 border border-[#046fcc]/30 text-[#046fcc] font-black text-2xl px-6 py-2 rounded-xl mb-4 relative z-10 tracking-tight">
+                ISO 9001 : 2015
+              </div>
+
+              <h3 className="text-lg font-extrabold text-slate-900 mb-2 relative z-10">
+                Systèmes de Management de la Qualité
+              </h3>
+              <p className="text-slate-500 text-sm leading-relaxed relative z-10">
+                Certifié par <strong className="text-slate-700">Bureau Veritas</strong> — engagement qualité reconnu internationalement pour l'ensemble de nos processus opérationnels.
+              </p>
+            </motion.div>
+
           </div>
+
+          {/* CTA Bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-10 text-center"
+          >
+            <Button className="bg-[#00a49a] hover:bg-[#03b0a5] text-white rounded-full font-bold px-10 h-12">
+              Voir notre politique Qualité
+            </Button>
+          </motion.div>
         </div>
       </motion.section>
 
