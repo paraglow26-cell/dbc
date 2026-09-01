@@ -483,53 +483,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── ADRESSE ── */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid lg:grid-cols-2 gap-16 items-center"
-          >
-            <div>
-              <motion.span variants={fadeInUp} className="inline-block text-[#00a49a] text-xs font-bold uppercase tracking-widest mb-3">
-                Réseau National
-              </motion.span>
-              <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Maillage Territorial</motion.h2>
-              <motion.div variants={staggerContainer} className="space-y-8">
-                <motion.div variants={fadeInUp} className="flex gap-6 items-start group">
-                  <div className="w-16 h-16 bg-white shadow-lg border border-gray-100 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[#00a49a] transition-colors duration-300">
-                    <Building2 className="w-8 h-8 text-[#00a49a] group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-extrabold text-gray-900 mb-2">Siège Social Stratégique</div>
-                    <div className="text-gray-500 text-lg leading-relaxed">Lot N° 35, Zone Industrielle, Route d'El Jadida, Casablanca, Maroc</div>
-                  </div>
-                </motion.div>
-                <motion.div variants={fadeInUp} className="flex gap-6 items-start group">
-                  <div className="w-16 h-16 bg-white shadow-lg border border-gray-100 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[#00a49a] transition-colors duration-300">
-                    <MapPin className="w-8 h-8 text-[#00a49a] group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-extrabold text-gray-900 mb-2">12 Antennes de Proximité</div>
-                    <div className="text-gray-500 text-lg leading-relaxed">Expertise locale et logistique d'urgence assurées 24/7 sur tout le Royaume pour un support immédiat.</div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-            <motion.div variants={scaleIn} className="rounded-[3rem] overflow-hidden shadow-2xl h-96 relative group">
-              <div className="absolute inset-0 bg-[#00a49a]/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-700" />
-              <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1000"
-                alt="ABC Synthese – Casablanca Hub"
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+
     </div>
   );
 }
