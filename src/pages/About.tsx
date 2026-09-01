@@ -7,8 +7,6 @@ import {
   Award,
   CheckCircle2,
   Stethoscope,
-  MapPin,
-  Building2,
   Bone,
   Activity,
   Microscope,
