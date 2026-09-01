@@ -43,7 +43,7 @@ const values = [
   {
     icon: Shield,
     title: 'Qualité',
-    description: 'Certification CE et conformité ISO 13485 pour tous nos produits. Contrôle qualité rigoureux à chaque étape du processus.',
+    description: 'Certifications CE, ISO 9001 et ISO 13485 pour tous nos produits. Contrôle qualité rigoureux à chaque étape du processus.',
     color: 'bg-blue-50',
     iconColor: 'text-blue-600',
   },
@@ -71,7 +71,7 @@ const values = [
 ];
 
 const certifications = [
-  'Certification ISO 13485 : Système de management de la qualité MD',
+  'Certifications ISO 9001 & ISO 13485 : Management de la Qualité & Dispositifs Médicaux',
   'Conformité rigoureuse aux standards CE (MDR 2017/745)',
   'Autorisation du Ministère de la Santé (DMP)',
   'Traçabilité totale informatisée des implants',
@@ -161,7 +161,7 @@ export default function About() {
                 { label: '90+', sub: 'Collaborateurs' },
                 { label: '12', sub: 'Antennes Nationales' },
                 { label: '4', sub: 'Entrepôts' },
-                { label: 'ISO 13485', sub: 'Certifié' },
+                { label: 'ISO 9001 & 13485', sub: 'Certifications' },
               ].map((s, i) => (
                 <motion.div key={i} variants={scaleIn} whileHover={{ scale: 1.05 }} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 text-white text-center shadow-xl">
                   <div className="text-4xl font-extrabold mb-2">{s.label}</div>
@@ -383,7 +383,7 @@ export default function About() {
               </motion.h2>
               <motion.p variants={fadeInUp} className="text-gray-600 mb-10 text-lg leading-relaxed">
                 Tous nos produits sont soumis à des contrôles qualité rigoureux. Notre engagement 
-                envers la sécurité patient est attesté par la certification ISO 13485.
+                envers la sécurité patient est attesté par les certifications ISO 9001 et ISO 13485.
               </motion.p>
               <motion.ul variants={staggerContainer} className="space-y-5">
                 {certifications.map((cert, idx) => (
@@ -408,7 +408,7 @@ export default function About() {
               <div className="grid grid-cols-2 gap-6">
                 {[
                   { val: '100%', sub: 'Traçabilité' },
-                  { val: 'ISO 13485', sub: 'Certifié' },
+                  { val: 'ISO 9001 & 13485', sub: 'Certifié' },
                   { val: '12', sub: 'Antennes' },
                   { val: '4', sub: "Entrepôts" },
                 ].map((s, i) => (

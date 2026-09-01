@@ -140,7 +140,7 @@ export default function Maintenance() {
           <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Conformité au Standard ISO</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Notre démarche SAV est intégrée dans notre système de management de la qualité, 
-            garantissant une traçabilité totale et le respect des normes ISO 13485.
+            garantissant une traçabilité totale et le respect des normes ISO 9001 et ISO 13485.
           </p>
         </div>
       </section>

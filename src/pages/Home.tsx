@@ -66,12 +66,12 @@ const heroSlides = [
     badge: 'Leader Chirurgie Orthopédique',
     tabTitle: 'Le Futur de la Chirurgie',
     title: <>Le Futur de la <span className="text-[#00a49a]">Chirurgie Orthopédique</span></>,
-    description: "Dispositifs médicaux implantables certifiés ISO 13485 et accompagnement technique haute précision au bloc opératoire.",
+    description: "Dispositifs médicaux implantables certifiés ISO 9001 & ISO 13485 et accompagnement technique haute précision au bloc opératoire.",
     primaryBtnText: "Découvrir le Catalogue",
     primaryBtnPath: "/produits",
     secondaryBtnText: "Regarder la Vidéo (HD)",
     secondaryAction: "video",
-    highlights: ["Certifié ISO 13485", "Assistance Bloc 24/7", "Traçabilité Absolue"]
+    highlights: ["Certifié ISO 9001 & 13485", "Assistance Bloc 24/7", "Traçabilité Absolue"]
   },
   {
     id: 2,
@@ -475,7 +475,7 @@ export default function Home() {
               { value: 15, suffix: '+', label: "Ans d'Expertise", sub: "Pionnier depuis 2016", icon: Award },
               { value: 90, suffix: '+', label: 'Collaborateurs', sub: 'Experts & Techniciens', icon: Users },
               { value: 12, suffix: '', label: 'Antennes Nationales', sub: 'Couverture 24/7 Maroc', icon: Map },
-              { value: 20, suffix: '+', label: 'Partenaires Mondiaux', sub: 'Fabricants ISO 13485', icon: Globe },
+              { value: 20, suffix: '+', label: 'Partenaires Mondiaux', sub: 'Certifiés ISO 9001 & 13485', icon: Globe },
             ].map((stat, idx) => (
               <motion.div 
                 key={idx} 

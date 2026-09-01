@@ -86,7 +86,7 @@ export const products: Product[] = [
       'Matériau': 'Titane haute pureté / Cobalt-Chrome',
       'Insert': 'Polyéthylène HXLPE',
       'Fixation': 'Press-fit ou Cimentée',
-      'Certifications': 'CE, ISO 13485'
+      'Certifications': 'CE, ISO 9001, ISO 13485'
     },
     features: [
       'Design anatomique pour stabilité optimale',

@@ -32,7 +32,7 @@ export default function Footer() {
               </Link>
               <p className="text-white/80 text-sm leading-relaxed">
                 Forte de plus de 15 ans d'expérience, ABC Synthese offre des dispositifs médicaux de
-                qualité certifiée ISO 13485. La satisfaction de nos partenaires de santé est au cœur de
+                qualité certifiée ISO 9001 et ISO 13485. La satisfaction de nos partenaires de santé est au cœur de
                 notre engagement.
               </p>
               <div className="flex gap-3 pt-2">
