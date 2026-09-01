@@ -15,6 +15,7 @@ import {
   Cpu,
 } from 'lucide-react';
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
+import '@/styles/president-font.css';
 import { useRef } from 'react';
 import presidentImg from '@/assets/president.jpg';
 
@@ -197,8 +198,32 @@ export default function About() {
                 transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
                 className="absolute -bottom-8 -right-8 bg-slate-900 text-white p-8 rounded-3xl shadow-2xl border border-slate-800 hidden md:block"
               >
-                <div className="text-2xl font-extrabold text-[#00a49a] mb-1">Dr. B. SABAI REGRAGUI</div>
-                <div className="text-sm text-white/60 uppercase tracking-widest font-semibold">Président Fondateur</div>
+                <div
+                  style={{
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '1.7rem',
+                    background: 'linear-gradient(90deg, #c9a84c, #f5e27a, #c9a84c)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    letterSpacing: '0.03em',
+                    lineHeight: 1.2,
+                    textShadow: 'none',
+                    marginBottom: '0.3rem',
+                  }}
+                >Dr. B. Sabai Regragui</div>
+                <div
+                  style={{
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '1rem',
+                    background: 'linear-gradient(90deg, #c9a84c, #f5e27a)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    letterSpacing: '0.12em',
+                    opacity: 0.85,
+                  }}
+                >Président Fondateur</div>
               </motion.div>
             </motion.div>
             
