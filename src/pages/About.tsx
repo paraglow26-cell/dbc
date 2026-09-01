@@ -198,32 +198,8 @@ export default function About() {
                 transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
                 className="absolute -bottom-8 -right-8 bg-slate-900 text-white p-8 rounded-3xl shadow-2xl border border-slate-800 hidden md:block"
               >
-                <div
-                  style={{
-                    fontFamily: "'Great Vibes', cursive",
-                    fontSize: '1.7rem',
-                    background: 'linear-gradient(90deg, #c9a84c, #f5e27a, #c9a84c)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    letterSpacing: '0.03em',
-                    lineHeight: 1.2,
-                    textShadow: 'none',
-                    marginBottom: '0.3rem',
-                  }}
-                >Dr. B. Sabai Regragui</div>
-                <div
-                  style={{
-                    fontFamily: "'Great Vibes', cursive",
-                    fontSize: '1rem',
-                    background: 'linear-gradient(90deg, #c9a84c, #f5e27a)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    letterSpacing: '0.12em',
-                    opacity: 0.85,
-                  }}
-                >Président Fondateur</div>
+                <div className="text-2xl font-extrabold text-[#00a49a] mb-1">Dr. B. SABAI REGRAGUI</div>
+                <div className="text-sm text-white/60 uppercase tracking-widest font-semibold">Président Fondateur</div>
               </motion.div>
             </motion.div>
             
@@ -240,7 +216,7 @@ export default function About() {
                 </motion.p>
                 <motion.div variants={fadeInUp} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 font-medium text-gray-900 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-[#00a49a]/5 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-                  <p className="relative z-10">Depuis sa création, ABC Synthese œuvre pour offrir des produits de haute qualité et des services adaptés aux besoins du marché marocain. Elle représente des fabricants de renommée internationale et demeure en veille constante afin d'introduire de nouvelles technologies et solutions médicales innovantes.</p>
+                   <p className="relative z-10" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.15rem', fontStyle: 'italic', letterSpacing: '0.01em', lineHeight: 1.8 }}>Depuis sa création, ABC Synthese œuvre pour offrir des produits de haute qualité et des services adaptés aux besoins du marché marocain. Elle représente des fabricants de renommée internationale et demeure en veille constante afin d'introduire de nouvelles technologies et solutions médicales innovantes.</p>
                 </motion.div>
               </motion.div>
             </div>
